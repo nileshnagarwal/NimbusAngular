@@ -1,0 +1,209 @@
+<nb-card>
+  <nb-card-header>
+    <button 
+      *ngIf = "modalStatus() | async"
+      mat-icon-button
+      type="button"
+      style="float: right;"
+      (click)="closeModal()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h3>Quote for Enquiry No {{ enquiryNo }}</h3>
+  </nb-card-header>
+
+  <nb-card-body>
+    <form
+      [formGroup]="quotesForm"
+      (ngSubmit)="addQuote(quotesForm)">
+
+      <!-- we will place our fields here -->
+
+      <!-- Transporter -->
+      <div class="form-group row">        
+        <div class="col-md-12 col-lg-6">
+          <mat-form-field class="full-width">
+            <input 
+              #transAutoComplete
+              type="text" 
+              placeholder="Transporter"
+              id="transporter"
+              name="transporter"
+              matInput
+              (click)="filter($event)"
+              (input)="filter($event)"
+              [matAutocomplete]="auto">
+            <button mat-icon-button matSuffix
+              (click)="addTransporter()"
+              type="button">
+              <mat-icon>person_add</mat-icon>
+            </button>
+            <!-- <mat-error *ngIf="transporter.invalid">{{getTransporterErrorMessage()}}</mat-error> -->
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="transSelected($event)" [displayWith]=transDisplayFn>
+              <mat-option #option *ngFor="let transporterOpt of transFilteredOptions" [value]="transporterOpt">
+                {{transporterOpt.transporter}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Vehicle Type -->
+      <div class="form-group row">
+        <div class="col-md-12 col-lg-6">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Vehicle Types" formControlName="vehicle_type_id" multiple>
+              <mat-option *ngFor="let vehicleTypeOpt of vehicleTypeOptions" [value]="vehicleTypeOpt.vehicle_type_id">{{vehicleTypeOpt.vehicle}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Vehicle Body -->
+      <div class="form-group row" *ngIf="vehicleBodyVisibility() | async">
+        <div class="col-md-12 col-lg-6">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Vehicle Body" formControlName="vehicle_body_id" multiple>
+              <mat-option *ngFor="let vehicleBodyOpt of vehicleBodyOptions" [value]="vehicleBodyOpt.vehicle_body_id">{{vehicleBodyOpt.body}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <!-- Freight -->
+      <div class="form-group row">
+        <div class="col-md-12 col-lg-6">
+          <mat-form-field class="full-width">
+            <input 
+              matInput
+              formControlName="freight"
+              id="freight" 
+              name="freight"
+              type="number"           
+              placeholder="Freight">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Vehicle Availability -->
+      <div class="form-group row">
+        <div class="col-lg-12">
+          <label 
+            for="vehicle_avail" 
+            class="col-form-label">
+            Vehicle Available?
+          </label>
+        </div>
+        <div class="col-lg-12">
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" 
+              name="vehicle_avail" 
+              formControlName="vehicle_avail"
+              value="yes">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Yes</span>
+          </label>
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" name="vehicle_avail"  
+              formControlName="vehicle_avail"
+              value="no">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">No</span>
+          </label>
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" 
+              name="vehicle_avail"
+              formControlName="vehicle_avail"
+              value="na"
+              checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Didn't Bother</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Including Fine? -->
+      <div class="form-group row">
+        <div class="col-lg-12">
+          <label 
+            for="including_fine" 
+            class="col-form-label">
+            Including Fine?
+          </label>
+        </div>
+        <div class="col-lg-12">
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" 
+              name="including_fine" 
+              formControlName="including_fine"
+              value="yes">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Yes</span>
+          </label>
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" name="including_fine"  
+              formControlName="including_fine"
+              value="no">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">No</span>
+          </label>
+          <label class="custom-control custom-radio inline-block">
+            <input type="radio" class="custom-control-input" 
+              name="including_fine"
+              formControlName="including_fine"
+              value="na"
+              checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Normal Cargo</span>
+          </label>
+        </div>
+      </div>
+      
+      <!-- Comments -->
+      <div class="form-group row">
+        <div class="col-md-12 col-lg-6">
+          <mat-form-field class="full-width">
+            <textarea 
+              matInput
+              formControlName="comments"
+              id="comments" 
+              name="comments"
+              type="textarea"           
+              placeholder="Comments">
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Adding the submit button -->
+      <div class="form-group row">
+        <div class="col-md-12 col-lg-6" align="right">
+          <!-- Clear the Form -->          
+          <button 
+            mat-raised-button
+            type="button"
+            style='margin-right:16px'
+            (click)="clearForm()">
+            CLEAR
+          </button>
+          <!-- Submit the Form -->
+          <button 
+            type="submit" 
+            mat-raised-button
+            color="primary"
+            [disabled]="!quotesForm.valid"
+            ngbAutofocus> 
+            <!-- ngbAutoFocus focuses on Submit button on opening 
+              of the page. This is to remove error: -->
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    
+    </form>
+
+    <!-- <pre>
+      {{ quotesForm.value | json }}
+    </pre> -->
+
+  </nb-card-body>       
+</nb-card>

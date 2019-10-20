@@ -1,0 +1,11 @@
+nb-card {
+  transform: translate3d(0, 0, 0);
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.full-width {
+  width: 100%;
+}

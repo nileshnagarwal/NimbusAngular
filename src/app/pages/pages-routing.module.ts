@@ -19,6 +19,16 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'enquiries-quotes',
+      loadChildren: () => import('./enquiries-quotes/enquiries-quotes.module')
+        .then(m => m.EnquiriesQuotesModule),
+    },
+    {
+      path: 'masters',
+      loadChildren: () => import('./masters/masters.module')
+        .then(m => m.MastersModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),

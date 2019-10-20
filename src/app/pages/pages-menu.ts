@@ -1,20 +1,60 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+  // {
+  //   title: 'E-commerce',
+  //   icon: 'shopping-cart-outline',
+  //   link: '/pages/dashboard',
+  //   home: true,
+  // },
+  // {
+  //   title: 'IoT Dashboard',
+  //   icon: 'home-outline',
+  //   link: '/pages/iot-dashboard',
+  // },
+  // {
+  //   title: 'FEATURES',
+  //   group: true,
+  // },
   {
-    title: 'E-commerce',
-    icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
-    home: true,
+    title: 'Enquiries-Quotes',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Enquiries',
+        link: '/pages/enquiries-quotes/enquiries',
+      },
+      {
+        title: 'Enquiries Report',
+        link: '/pages/enquiries-quotes/enquiries-report',
+      },
+      {
+        title: 'Quotes Report',
+        link: '/pages/enquiries-quotes/quotes-report',
+      },
+      {
+        title: 'Enquiries Search',
+        link: '/pages/enquiries-quotes/enquiries-search',
+      },
+    ],
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
-  },
-  {
-    title: 'FEATURES',
-    group: true,
+    title: 'Masters',
+    icon: 'grid-outline',
+    children: [
+      {
+        title: 'Vehicle Body',
+        link: '/pages/masters/vehicle-body',
+      },
+      {
+        title: 'Vehicle Type',
+        link: '/pages/masters/vehicle-type',
+      },
+      {
+        title: 'Transporter',
+        link: '/pages/masters/transporter',
+      },
+    ],
   },
   {
     title: 'Layout',

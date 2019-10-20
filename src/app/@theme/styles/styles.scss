@@ -18,6 +18,9 @@
 @import './layout';
 @import './overrides';
 
+// material design themes
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 // install the framework and custom global styles
 @include nb-install() {
 
