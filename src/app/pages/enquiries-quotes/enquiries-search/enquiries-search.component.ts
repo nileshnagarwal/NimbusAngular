@@ -2,7 +2,7 @@ import { EnquiriesService } from './../../../common/services/enquiries-quotes/en
 import { VehicleType } from './../../../common/interfaces/vehicle-type';
 import { VehicleTypeService } from './../../../common/services/masters/vehicle-type.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { enquiryStatusOpt } from '../../../common/misc/api-constants';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Observable, of } from 'rxjs';
@@ -36,7 +36,7 @@ export class EnquiriesSearchComponent implements OnInit {
 
   @ViewChild('sourceRef', { static: true }) sourceRef: GooglePlaceDirective;
   @ViewChild('destRef', { static: true }) destRef: GooglePlaceDirective;
-  
+
   ngOnInit() {
     this.vehicleTypeService.getVehicleType().
       subscribe(response => {
