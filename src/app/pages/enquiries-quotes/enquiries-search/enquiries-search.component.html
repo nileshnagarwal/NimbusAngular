@@ -16,106 +16,7 @@
         <!-- we will place our fields here -->
         <!-- First Row Filters -->
           <div class="form-group row">
-            <!-- Search From Date -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input
-                  id="from_date"
-                  name="from_date"
-                  matInput [matDatepicker]="from_date" 
-                  formControlName="from_date"
-                  placeholder="Start Date">
-                <mat-datepicker-toggle matSuffix [for]="from_date"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #from_date></mat-datepicker>
-              </mat-form-field>
-            </div>
-
-            <!-- Source -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input
-                  matInput
-                  ngx-google-places-autocomplete 
-                  [options]='placesOptions' 
-                  #sourceRef="ngx-places" 
-                  (onAddressChange)="handleSourceAddressChange($event)"
-                  (input)="resetSourceDest($event, 'source')"
-                  placeholder="Pickup From"
-                  id="source"
-                  name="source">
-              </mat-form-field>
-            </div>
-
-            <!-- Destination -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input
-                  matInput
-                  ngx-google-places-autocomplete 
-                  [options]='placesOptions' 
-                  #destRef="ngx-places" 
-                  (onAddressChange)="handleDestAddressChange($event)"
-                  (input)="resetSourceDest($event, 'dest')"
-                  placeholder="Deliver To"
-                  id="dest"
-                  name="dest">
-              </mat-form-field>
-            </div>
-
-            <!-- Vehicle Type -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">          
-                <mat-select placeholder="Vehicle Types" formControlName="vehicle_type" multiple>
-                  <mat-option *ngFor="let vehicleTypeOpt of vehicleTypeOptions" [value]="vehicleTypeOpt.vehicle_type_id">{{vehicleTypeOpt.vehicle}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-        
-        <!-- Second Row Filters -->
-          <!-- Search To Date -->
-          <div class="form-group row">
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input 
-                  id="to_date"
-                  name="to_date"
-                  matInput [matDatepicker]="to_date" 
-                  formControlName="to_date"
-                  placeholder="End Date">
-                <mat-datepicker-toggle matSuffix [for]="to_date"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #to_date></mat-datepicker>
-              </mat-form-field>
-            </div>
-
-            <!-- Source Radius -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input 
-                  matInput
-                  formControlName="source_rad"
-                  id="source_rad" 
-                  name="source_rad"
-                  type="number"      
-                  placeholder="Pickup Radius">
-                <span matSuffix>Km</span>
-              </mat-form-field>
-            </div>
-        
-            <!-- Destination Radius -->
-            <div class="col-lg-3 col-xl-2">
-              <mat-form-field class="full-width">
-                <input 
-                  matInput
-                  formControlName="dest_rad"
-                  id="dest_rad" 
-                  name="dest_rad"
-                  type="number"      
-                  placeholder="Destination Radius">
-                <span matSuffix>Km</span>
-              </mat-form-field>
-            </div>
-          
+            
             <!-- Status of Enquiry -->
             <div class="col-lg-3 col-xl-2">
               <mat-form-field class="full-width">
@@ -133,7 +34,114 @@
                 </mat-autocomplete>
               </mat-form-field>
             </div>
+
+            <!-- Vehicle Type -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">          
+                <mat-select placeholder="Vehicle Types" formControlName="vehicle_type" multiple>
+                  <mat-option *ngFor="let vehicleTypeOpt of vehicleTypeOptions" [value]="vehicleTypeOpt.vehicle_type_id">{{vehicleTypeOpt.vehicle}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+              
+            <!-- Search From Date -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input
+                  id="from_date"
+                  name="from_date"
+                  matInput [matDatepicker]="from_date" 
+                  formControlName="from_date"
+                  placeholder="Start Date">
+                <mat-datepicker-toggle matSuffix [for]="from_date"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #from_date></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <!-- Search To Date -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input 
+                  id="to_date"
+                  name="to_date"
+                  matInput [matDatepicker]="to_date" 
+                  formControlName="to_date"
+                  placeholder="End Date">
+                <mat-datepicker-toggle matSuffix [for]="to_date"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #to_date></mat-datepicker>
+              </mat-form-field>
+            </div>            
+
           </div>
+        <!-- End of First Row -->
+        
+        <!-- Second Row Filters -->
+          <div class="form-group row">
+
+            <!-- Source -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  ngx-google-places-autocomplete 
+                  [options]='placesOptions' 
+                  #sourceRef="ngx-places" 
+                  (onAddressChange)="handleSourceAddressChange($event)"
+                  (input)="resetSourceDest($event, 'source')"
+                  placeholder="Pickup From"
+                  id="source"
+                  name="source">
+              </mat-form-field>
+            </div>
+
+
+
+            <!-- Source Radius -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input 
+                  matInput
+                  formControlName="source_rad"
+                  id="source_rad" 
+                  name="source_rad"
+                  type="number"      
+                  placeholder="Pickup Radius">
+                <span matSuffix>Km</span>
+              </mat-form-field>
+            </div>
+            
+            <!-- Destination -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  ngx-google-places-autocomplete 
+                  [options]='placesOptions' 
+                  #destRef="ngx-places" 
+                  (onAddressChange)="handleDestAddressChange($event)"
+                  (input)="resetSourceDest($event, 'dest')"
+                  placeholder="Deliver To"
+                  id="dest"
+                  name="dest">
+              </mat-form-field>
+            </div>
+        
+            <!-- Destination Radius -->
+            <div class="col-lg-3 col-xl-2">
+              <mat-form-field class="full-width">
+                <input 
+                  matInput
+                  formControlName="dest_rad"
+                  id="dest_rad" 
+                  name="dest_rad"
+                  type="number"      
+                  placeholder="Delivery Radius">
+                <span matSuffix>Km</span>
+              </mat-form-field>
+            </div>
+          
+          </div> 
+        <!-- End of Second Row -->
         
         <!-- Adding the submit button -->
         <div class="form-group row">

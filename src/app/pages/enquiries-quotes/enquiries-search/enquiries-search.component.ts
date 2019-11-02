@@ -2,10 +2,11 @@ import { EnquiriesService } from './../../../common/services/enquiries-quotes/en
 import { VehicleType } from './../../../common/interfaces/vehicle-type';
 import { VehicleTypeService } from './../../../common/services/masters/vehicle-type.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { enquiryStatusOpt } from '../../../common/misc/api-constants';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Observable, of } from 'rxjs';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 @Component({
   selector: 'ngx-enquiries-search',
@@ -33,6 +34,9 @@ export class EnquiriesSearchComponent implements OnInit {
     });
   }
 
+  @ViewChild('sourceRef', { static: true }) sourceRef: GooglePlaceDirective;
+  @ViewChild('destRef', { static: true }) destRef: GooglePlaceDirective;
+  
   ngOnInit() {
     this.vehicleTypeService.getVehicleType().
       subscribe(response => {
@@ -47,6 +51,13 @@ export class EnquiriesSearchComponent implements OnInit {
   vehicleTypeOptions: VehicleType[];
   statusOptions: string[];
   $data: Observable<any>;
+
+  // This is used in template to restrict Google Places
+  // text box to India.
+  placesOptions = {
+    types: [],
+    componentRestrictions: {country: 'in'},
+  };
 
   resetSourceDest(input, field: string) {
     if (!input.target.value.replace(/\s/g, '').length) {
@@ -75,6 +86,22 @@ export class EnquiriesSearchComponent implements OnInit {
       .subscribe(response => {
         this.$data = of(response.body);
       });
+  }
+
+  clearForm() {
+    // Reset the table to show all enquiries
+    this.service.getEnquiry()
+    .subscribe(response => {
+      this.$data = of(response.body);
+    });
+    // Reset the GooglePlaceDirective
+    this.sourceRef.reset();
+    this.destRef.reset();
+    // Show null value in source and dest fields
+    this.sourceRef['el']['nativeElement']['value'] = '';
+    this.destRef['el']['nativeElement']['value'] = '';
+    // Reset the whole form
+    this.enquiriesSearchForm.reset();
   }
 
   // The following get functions are used to describe
