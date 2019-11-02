@@ -8,12 +8,14 @@ import { EnquiriesViewComponent } from './enquiries-view/enquiries-view.componen
 import { EnquiriesQuotesComponent } from './enquiries-quotes.component';
 import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
+import { AuthGuardService } from '../../common/services/auth/auth-guard/auth-guard.service';
 
 const routes: Routes = [{
     path: '',
     component: EnquiriesComponent,
     children: [{
       path: 'enquiries',
+      canActivate: [AuthGuardService],
       component: EnquiriesComponent,
       }],
   },
@@ -22,6 +24,7 @@ const routes: Routes = [{
     component: EnquiriesReportComponent,
     children: [{
       path: 'enquiries-report',
+      canActivate: [AuthGuardService],
       component: EnquiriesReportComponent,
     }],
   },
@@ -30,6 +33,7 @@ const routes: Routes = [{
     component: QuotesReportComponent,
     children: [{
       path: 'quotes-report',
+      canActivate: [AuthGuardService],
       component: QuotesReportComponent,
     }],
   },
@@ -38,6 +42,7 @@ const routes: Routes = [{
     component: EnquiriesSearchComponent,
     children: [{
       path: 'enquiries-search',
+      canActivate: [AuthGuardService],
       component: EnquiriesSearchComponent,
     }],
   }];
