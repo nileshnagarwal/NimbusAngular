@@ -218,7 +218,14 @@ export class EnquiriesComponent implements OnInit {
   // Below are AddressChange handlers for Source, Destination and Return.
   public handleSourceAddressChange(address: Address, i: number) {
     // First we update the value selected from suggestions in input box
-    this.sources.controls[i].get('place').setValue(address.name + ', ' + address.formatted_address);
+
+    // If the place name is not present in formatted adress, concat the name with the address
+    if (address.formatted_address.indexOf(address.name) < 0) {
+      this.sources.controls[i].get('place').setValue(address.name + ', ' + address.formatted_address);
+    } else {
+      this.sources.controls[i].get('place').setValue(address.formatted_address);
+    }
+
     // Next we set googlePlaceValidator passing the address. This was not
     // set before as we need to pass the address to validator and initially
     // this value is null.

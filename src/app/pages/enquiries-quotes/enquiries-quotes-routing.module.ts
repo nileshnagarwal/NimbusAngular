@@ -9,6 +9,7 @@ import { EnquiriesQuotesComponent } from './enquiries-quotes.component';
 import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { AuthGuardService } from '../../common/services/auth/auth-guard/auth-guard.service';
+import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summary-card.component';
 
 const routes: Routes = [{
     path: '',
@@ -35,6 +36,15 @@ const routes: Routes = [{
       path: 'quotes-report',
       canActivate: [AuthGuardService],
       component: QuotesReportComponent,
+    }],
+  },
+  {
+    path: '',
+    component: EnquirySummaryCardComponent,
+    children: [{
+      path: 'enquiry-view',
+      canActivate: [AuthGuardService],
+      component: EnquirySummaryCardComponent,
     }],
   },
   {

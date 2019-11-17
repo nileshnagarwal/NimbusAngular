@@ -22,6 +22,7 @@ import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.co
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { EnquiriesTableComponent } from './enquiries-table/enquiries-table.component';
 import { NbCardModule } from '@nebular/theme';
+import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summary-card.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { NbCardModule } from '@nebular/theme';
     EnquiryConfirmComponent,
     EnquiriesSearchComponent,
     EnquiriesReportComponent,
+    EnquirySummaryCardComponent,
   ],
   providers: [
     VehicleTypeService,
