@@ -14,6 +14,11 @@ export interface Enquiry {
     comments?: string;
     loading_date: Date;
     extraExpenses: number[];
+    places_obj:  Object[];
+    places_source_obj?: Object[];
+    places_destination_obj?: Object[];
+    places_source?: string[];
+    places_destination?: string[];
 }
 
 

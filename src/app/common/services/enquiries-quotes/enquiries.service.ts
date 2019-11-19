@@ -4,6 +4,7 @@ import { Enquiry } from '../../interfaces/enquiry';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { EnquiriesSearch } from '../../interfaces/enquiry-search';
+import { pageSize } from '../../misc/api-constants';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +28,15 @@ export class EnquiriesService {
 
   }
 
-  getEnquiry(): Observable<HttpResponse<Enquiry[]>>  {
+  getEnquiry(pageNumber): Observable<HttpResponse<Enquiry[]>>  {
     return this.http
       .get<Enquiry[]>(this.url,
         {
+          params: {
+            limit: pageSize.toString(),
+            // For 1st page, offset = 0. Hence sub 1 from pageNumber
+            offset: ((pageNumber - 1) * pageSize).toString(),
+          },
           observe: 'response',
           headers: this.header,
         });

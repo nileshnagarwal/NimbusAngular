@@ -90,7 +90,7 @@ export class EnquiriesSearchComponent implements OnInit {
 
   clearForm() {
     // Reset the table to show all enquiries
-    this.service.getEnquiry()
+    this.service.getEnquiry(1)
     .subscribe(response => {
       this.$data = of(response.body);
     });

@@ -21,8 +21,9 @@ import { EnquiryConfirmComponent } from './enquiry-confirm/enquiry-confirm.compo
 import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { EnquiriesTableComponent } from './enquiries-table/enquiries-table.component';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbListModule } from '@nebular/theme';
 import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summary-card.component';
+import { PipesModule } from '../../common/modules/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -41,6 +42,8 @@ import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summ
     NbCardModule,
     FormsModule,
     ReactiveFormsModule,
+    NbListModule,
+    PipesModule,
   ],
   declarations: [
     ...routedComponents,

@@ -89,7 +89,7 @@ export class EnquiriesTableComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     if (!this.data) {
-      this.service.getEnquiry()
+      this.service.getEnquiry(1)
         .subscribe(response => {
           this.source.load(response.body);
           // Trigger toastr for reminding to subsribe

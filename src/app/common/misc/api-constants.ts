@@ -18,3 +18,5 @@ export const loadTypeOptions = {
     'Container': 3,
     'Part': 4,
 };
+
+export const pageSize = 20;
