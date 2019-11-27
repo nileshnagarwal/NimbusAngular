@@ -1,5 +1,5 @@
 import { EnquiriesService } from './../../../common/services/enquiries-quotes/enquiries.service';
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Enquiry } from '../../../common/interfaces/enquiry';
 import { pageSize } from '../../../common/misc/api-constants';
 
@@ -8,17 +8,24 @@ import { pageSize } from '../../../common/misc/api-constants';
   templateUrl: './enquiry-summary-card.component.html',
   styleUrls: ['./enquiry-summary-card.component.css'],
 })
-export class EnquirySummaryCardComponent {
+export class EnquirySummaryCardComponent implements OnInit {
 
   constructor(
     private service: EnquiriesService,
   ) { }
 
+  ngOnInit() {
+    this.isMobile();
+    this.loadNext();
+  }
+
+  mobile: Boolean; // Keeps track if the screen if mobile or desktop
   enquiriesList = [];
   loading = false;
   placeholders = [];
   pageToLoadNext = 1;
   enquiriesCount = 0;
+  isResizing = false;
 
   // This function is triggered at the end of page scroll
   loadNext() {
@@ -70,4 +77,30 @@ export class EnquirySummaryCardComponent {
       } else return enquiry.places_destination_obj[0]['administrative_area_level_2'];
     } else return null;
   }
+
+  getVehicleIcon(vehicleType) {
+    if (vehicleType) {
+      return '..\\..\\..\\..\\assets\\images\\' + vehicleType.toString() + '.png';
+    } else return null;
+  }
+
+  @HostListener('window:orientationchange', ['$event'])
+    onOrientationChange(event) {
+    this.isMobile();
+  }
+
+  @HostListener('window:resize', ['$event'])
+    onResizing(event) {
+    this.isMobile();
+  }
+
+  isMobile() {
+    this.isResizing = true;
+    // Check if mobile screen resolution
+    if (window.screen.width < 1024) { // 768px portrait
+      this.mobile = true;
+    } else this.mobile = false;
+    this.isResizing = false;
+  }
+
 }
