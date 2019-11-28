@@ -1,0 +1,372 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 100%;
+  }
+  
+  .overflow {
+    overflow: hidden;
+  }
+  
+  @media only screen and (max-width: 480px) {
+  
+    nb-card-header {
+      border-bottom: none;
+      text-align: right;
+      padding: 0 1.25rem;
+      padding-top: 1rem;
+    }
+    
+    .h1-card {
+      font-family: Open Sans, sans-serif;
+      font-weight: 550;
+      font-size: 80%;
+      color: #373737;
+    }
+    
+    .h2-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 75%;
+    font-weight: 550;
+    color: #373737;
+    }
+    
+    .h3-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 70%;
+    color: #545454;
+    }
+    
+    .h4-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 70%;
+    color: #373737;
+    }
+    
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "location misc-details";
+      margin: 0%;
+      padding: 0%;
+    }
+    
+    .location {
+      grid-area: location;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      grid-template-areas: "seperator from-to";
+    }
+    
+    .from-to {
+      grid-area: from-to;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:  "location-1" 
+                            "location-2"
+    }
+    
+    .location-1 {
+      padding-left: 10px;
+      padding-right: 15px;
+      grid-area: location-1;
+      align-self: top;
+      justify-self: left;
+      text-align: left;
+    }
+    
+    .location-2 {
+      padding-left: 10px;
+      padding-right: 15px;
+      grid-area: location-2;
+      align-self: flex-end;
+      justify-self: left;
+      text-align: left;
+    }
+    
+    .loc {
+      margin-bottom: 0px;
+    }
+    
+    .seperator {
+      grid-area: seperator;
+      align-items: center;
+      display: grid;
+      grid-template-rows: min-content 1fr min-content;
+      grid-template-areas:  "dot-start" 
+                            "line" 
+                            "dot-end";
+    }
+    
+    .line {
+      width: 1px;
+      background-color: #ccc;
+      height: 100%;
+      border: 0px solid black;
+      justify-self: center;
+    }
+        
+    .dot-start {
+      grid-area: dot-start;
+      justify-self: center;
+      align-self: center;
+    }
+      
+    .dot-end {
+      grid-area: dot-end;
+      justify-self: center;
+      align-self: center;
+      margin-bottom: 2.65em;
+    }
+    
+    .misc-details {
+      grid-area: misc-details;
+      display: grid;
+      justify-self: right;
+      grid-template-rows: 1fr max-content 1fr;    
+      grid-template-areas: "vehicle-type"
+                            "seperator-2"
+                            "other-details";
+    }
+    
+    .vehicle-load {
+      grid-area: vehicle-type;
+      display: grid;
+      width: 100%;
+      grid-template-columns: max-content;
+      grid-template-areas:   "vehicle"
+                            "load-size";
+    }
+    
+    .vehicle {
+      grid-area: vehicle;
+      display: grid;
+      justify-self: center;
+      grid-template-columns: max-content min-content;
+      grid-template-areas: "vehicle-icon vehicle-type";
+      padding-bottom: 0.5em;
+    }
+    
+    .vehicle-icon {
+      grid-area: vehicle-icon;
+      padding-right: 1em;
+    }
+    
+    .vehicle-type {
+      grid-area: vehicle-type;
+      text-align: center;
+      align-self: center;
+    }
+    
+    .load-size {
+      grid-area: load-size;
+      justify-self: center;
+      text-align: center;
+      padding-top: 0.5em;
+    }
+    
+    img {
+        max-width: 4em;
+    }
+    
+    .other-details {
+      grid-area: other-details;
+      display: grid;
+      grid-template-rows: 1fr min-content 1fr;
+      width: 100%;
+      justify-items: center;
+      align-items: center;
+    }
+    
+    .gray-line {
+      width: 100%;
+      background-color: #ccc;
+      height: 1px;
+      border: 0px solid #545454;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 1023px) {
+    nb-card-header {
+      border-bottom: none;
+      text-align: right;
+      padding: 0 1.25rem;
+      padding-top: 1rem;
+    }
+  
+    .h1-card {
+      font-family: Open Sans, sans-serif;
+      font-weight: 550;
+      font-size: 115%;
+      color: #373737;
+    }
+  
+    .h2-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 105%;
+    font-weight: 550;
+    color: #373737;
+    }
+  
+    .h3-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 90%;
+    color: #545454;
+    }
+  
+    .h4-card {
+    font-family: Open Sans, sans-serif;
+    font-size: 90%;
+    color: #373737;
+    }
+  
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "location misc-details";
+      margin: 0%;
+      padding: 0%;
+    }
+  
+    .location {
+      grid-area: location;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      grid-template-areas: "seperator from-to";
+    }
+  
+    .from-to {
+      grid-area: from-to;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:  "location-1" 
+                            "location-2";
+    }
+  
+    .location-1 {
+      padding-left: 10px;
+      padding-right: 15px;
+      grid-area: location-1;
+      align-self: top;
+      justify-self: left;
+      text-align: left;
+    }
+  
+    .location-2 {
+      padding-left: 10px;
+      padding-right: 15px;
+      grid-area: location-2;
+      align-self: flex-end;
+      justify-self: left;
+      text-align: left;
+    }
+  
+    .loc {
+      margin-bottom: 0px;
+    }
+  
+    .seperator {
+      grid-area: seperator;
+      align-items: center;
+      display: grid;
+      grid-template-rows: min-content 1fr min-content;
+      grid-template-areas:  "dot-start" 
+                            "line" 
+                            "dot-end";
+    }
+  
+    .line {
+      width: 1px;
+      background-color: #ccc;
+      height: 100%;
+      border: 0px solid black;
+      justify-self: center;
+    }
+        
+    .dot-start {
+      grid-area: dot-start;
+      justify-self: center;
+      align-self: center;
+    }
+      
+    .dot-end {
+      grid-area: dot-end;
+      justify-self: center;
+      align-self: center;
+      margin-bottom: 2.65em;
+    }
+  
+    .misc-details {
+      grid-area: misc-details;
+      display: grid;
+      justify-self: right;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr max-content 1fr;    
+      grid-template-areas: "vehicle-type"
+                            "seperator-2"
+                            "other-details";
+    }
+  
+    .vehicle-load {
+      grid-area: vehicle-type;
+      display: grid;
+      width: 100%;
+      grid-template-columns: max-content;
+      grid-template-areas:   "vehicle"
+                            "load-size";
+    }
+  
+    .vehicle {
+      grid-area: vehicle;
+      display: grid;
+      justify-self: center;
+      grid-template-columns: max-content min-content;
+      grid-template-areas: "vehicle-icon vehicle-type";
+      padding-bottom: 0.5em;
+    }
+  
+    .vehicle-icon {
+      grid-area: vehicle-icon;
+      padding-right: 1em;
+    }
+  
+    .vehicle-type {
+      grid-area: vehicle-type;
+      text-align: center;
+      align-self: center;
+    }
+  
+    .load-size {
+      grid-area: load-size;
+      justify-self: center;
+      text-align: center;
+      padding-top: 0.5em;
+    }
+  
+    img {
+        max-width: 8em;
+    }
+  
+    .other-details {
+      grid-area: other-details;
+      display: grid;
+      grid-template-rows: 1fr min-content 1fr;
+      width: 100%;
+      justify-items: center;
+      align-items: center;
+    }
+  
+    .gray-line {
+      width: 100%;
+      background-color: #ccc;
+      height: 1px;
+      border: 0px solid #545454;
+    }
+  }

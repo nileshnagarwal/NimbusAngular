@@ -1,0 +1,50 @@
+<nb-card accent="info">
+  <nb-card-header>#{{ enquiry.enquiry_no }}</nb-card-header>
+  <nb-card-body *ngIf="!isResizing">
+    <div class="card-container">
+      <div class="location">
+        <div class="from-to overflow">
+          <div class="location-1 ellipsis">
+            <p class="loc ellipsis">
+              <span class="h1-card">{{ getLocality(enquiry, 'source') }}</span><br>
+              <span class="h3-card">{{ enquiry.places_source_obj[0]['administrative_area_level_2'] }}
+              <br>{{ enquiry.places_source_obj[0]['administrative_area_level_1'] }}</span>
+            </p>
+        </div>
+          <div class="location-2 ellipsis">
+          <p class="loc ellipsis">
+            <span class="h1-card">{{ getLocality(enquiry, 'destination') }}</span><br>
+            <span class="h3-card">{{ enquiry.places_destination_obj[0]['administrative_area_level_2'] }}
+              <br>{{ enquiry.places_destination_obj[0]['administrative_area_level_1'] }}</span>
+          </p>
+        </div>
+        </div>
+        <div class="seperator">
+          <svg height="1.2em" width="1.2em" class="dot-start">
+            <circle cx="0.6em" cy="0.74em" r="0.4em" stroke="black" stroke-width="0.06em" fill="lightgreen" />
+          </svg>
+          <div class="line"></div>
+          <svg height="1.2em" width="1.2em" class="dot-end">
+            <circle cx="0.6em" cy="0.5em" r="0.4em" stroke="red" stroke-width="0.12em" fill="white" />
+          </svg>
+        </div>
+      </div>
+      <div class="misc-details">
+        <div class="vehicle-load">
+          <div class="vehicle">
+            <div class="vehicle-icon"><img [src]="getVehicleIcon(enquiry['vehicle_type_obj'][0]['category'])"></div>
+            <div class="vehicle-type"><span class="h2-card">{{ enquiry['vehicle_type_obj'][0]['category'] }}</span><br>
+            <span class="h4-card">Load</span></div>
+          </div>              
+        <div class="h2-card load-size">{{ enquiry.load_size | feetInches }} | {{ enquiry.weight }}</div>
+      </div>
+        <hr class="gray-line" />
+        <div class="other-details">
+        <div class="load-type h2-card">{{ enquiry.load_type }} Cargo</div>
+        <hr class="gray-line" />
+        <div class="loading-date h2-card">{{ enquiry.loading_date | date:'dd LLL | EEE' }}</div>
+      </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -9,7 +9,7 @@ import { EnquiriesQuotesComponent } from './enquiries-quotes.component';
 import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { AuthGuardService } from '../../common/services/auth/auth-guard/auth-guard.service';
-import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summary-card.component';
+import { EnquiryListComponent } from './enquiry-list/enquiry-list.component';
 
 const routes: Routes = [{
     path: '',
@@ -40,11 +40,11 @@ const routes: Routes = [{
   },
   {
     path: '',
-    component: EnquirySummaryCardComponent,
+    component: EnquiryListComponent,
     children: [{
       path: 'enquiry-view',
       canActivate: [AuthGuardService],
-      component: EnquirySummaryCardComponent,
+      component: EnquiryListComponent,
     }],
   },
   {

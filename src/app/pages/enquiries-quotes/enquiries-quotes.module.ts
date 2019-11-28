@@ -22,8 +22,10 @@ import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.co
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { EnquiriesTableComponent } from './enquiries-table/enquiries-table.component';
 import { NbCardModule, NbListModule } from '@nebular/theme';
-import { EnquirySummaryCardComponent } from './enquiry-summary-card/enquiry-summary-card.component';
+import { EnquiryListComponent } from './enquiry-list/enquiry-list.component';
 import { PipesModule } from '../../common/modules/pipes/pipes.module';
+import { EnquiryCardMobileComponent } from './enquiry-card-mobile/enquiry-card-mobile.component';
+import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card-desktop.component';
 
 @NgModule({
   imports: [
@@ -50,7 +52,9 @@ import { PipesModule } from '../../common/modules/pipes/pipes.module';
     EnquiryConfirmComponent,
     EnquiriesSearchComponent,
     EnquiriesReportComponent,
-    EnquirySummaryCardComponent,
+    EnquiryListComponent,
+    EnquiryCardMobileComponent,
+    EnquiryCardDesktopComponent,
   ],
   providers: [
     VehicleTypeService,
