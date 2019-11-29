@@ -1,5 +1,5 @@
 import { EnquiriesService } from '../../../common/services/enquiries-quotes/enquiries.service';
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { pageSize } from '../../../common/misc/api-constants';
 
 @Component({
@@ -18,8 +18,14 @@ export class EnquiryListComponent implements OnInit {
     this.loadNext();
   }
 
+  ngOnChanges(changes) {
+    console.log('CHANGES', changes);
+  }
+
+
+  @Input() enquiriesList = [];
+  @Input() cursor: string = null;
   mobile: Boolean; // Keeps track if the screen if mobile or desktop
-  enquiriesList = [];
   loading = false;
   placeholders = [];
   pageToLoadNext = 1;
@@ -28,32 +34,73 @@ export class EnquiryListComponent implements OnInit {
 
   // This function is triggered at the end of page scroll
   loadNext() {
+    console.log('Executing loadNext()');
+    console.log('Enquiries List before execution: ', this.enquiriesList);
+    console.log('Cursor before execution: ', this.cursor);
+    console.log('Loading: ', this.loading);
     // If already loading, return
     if (this.loading) { return; }
 
-    // If the count of enquiries has already been covered and page is over 1, return
-    if (this.enquiriesCount - ((this.pageToLoadNext - 1) * pageSize) < 0
-        && this.pageToLoadNext > 1) { return; }
-
-    // If above 2 conditions are not satisfied
+    // If above conditions are not satisfied
     // Set loading to true
     this.loading = true;
     // Set placeholder size to pageSize. Placholders are not used for now
     this.placeholders = new Array(pageSize);
-    // Load data for next page
-    this.service.getEnquiry(this.pageToLoadNext)
+    
+    // If input data has been provided, use the same.
+    if (!(Array.isArray(this.enquiriesList)) || this.enquiriesList.length === 0) {
+      console.log('Enquiries list empty');
+      // Load data for next page
+      this.service.getEnquiry(this.cursor)
       .subscribe(res => {
-        // Set enquiriesCount
-        this.enquiriesCount = +res['body']['count'];
+        // Set Cursor
+        const searchParams = new URLSearchParams(res['body']['next'].toString().split('?')[1]);
+        this.cursor = searchParams.get('cursor');
+        console.log('Cursor: ', this.cursor);
         // Reset placeholder to blank array
         this.placeholders = [];
         // Set enquiriesList
+        this.enquiriesList = [];
         this.enquiriesList = this.enquiriesList.concat(res['body']['results']);
         // Set loading to false
         this.loading = false;
+        console.log('Loading changed to: ', this.loading);
         // Increment page count
         this.pageToLoadNext++;
+        console.log('Exiting Block 1');
       });
+    } else {
+      console.log('Enquiries List: ', this.enquiriesList);
+      if (this.cursor) {
+        console.log('Cursor Found. Adding new page');
+        this.service.getEnquiry(this.cursor)
+          .subscribe(res => {
+            console.log('New Page request res: ', res);
+            // Set Cursor
+            const next = res['body']['next'];
+            if (next) {
+              const searchParams = new URLSearchParams(res['body']['next'].toString().split('?')[1]);
+              this.cursor = searchParams.get('cursor');
+            } else this.cursor = null;
+            console.log('Cursor: ', this.cursor);
+            // Reset placeholder to blank array
+            this.placeholders = [];
+            console.log('Enquiries List before revising', this.enquiriesList);
+            // Set enquiriesList
+            this.enquiriesList = this.enquiriesList.concat(res['body']['results']);
+            console.log('EnquiriesList Revised: ', this.enquiriesList);
+            // Set loading to false
+            this.loading = false;
+            console.log('Loading changed to: ', this.loading);
+            // Increment page count
+            this.pageToLoadNext++;
+            console.log('Exiting Block 2');
+          })
+      } else {
+        this.loading = false;
+        return;
+      } 
+    }
   }
 
   @HostListener('window:orientationchange', ['$event'])

@@ -1,3 +1,4 @@
+import { EnquiryHelper } from './../../../common/functions/enquiry-helper';
 import { EnquiriesService } from './../../../common/services/enquiries-quotes/enquiries.service';
 import { VehicleType } from './../../../common/interfaces/vehicle-type';
 import { VehicleTypeService } from './../../../common/services/masters/vehicle-type.service';
@@ -51,6 +52,8 @@ export class EnquiriesSearchComponent implements OnInit {
   vehicleTypeOptions: VehicleType[];
   statusOptions: string[];
   $data: Observable<any>;
+  $cursor: Observable<string>;
+  searchParams: URLSearchParams;
 
   // This is used in template to restrict Google Places
   // text box to India.
@@ -84,15 +87,17 @@ export class EnquiriesSearchComponent implements OnInit {
   searchEnquiry(enquiriesSearchForm) {
     this.service.searchEnquiry(enquiriesSearchForm.value)
       .subscribe(response => {
-        this.$data = of(response.body);
+        this.$data = of(response.body['results']);
+        this.$cursor = EnquiryHelper.getCursor(response);
       });
   }
 
   clearForm() {
     // Reset the table to show all enquiries
-    this.service.getEnquiry(1)
+    this.service.getEnquiry(null)
     .subscribe(response => {
-      this.$data = of(response.body);
+      this.$cursor = EnquiryHelper.getCursor(response);
+      this.$data = of(response.body['results']);
     });
     // Reset the GooglePlaceDirective
     this.sourceRef.reset();
@@ -103,6 +108,8 @@ export class EnquiriesSearchComponent implements OnInit {
     // Reset the whole form
     this.enquiriesSearchForm.reset();
   }
+
+  
 
   // The following get functions are used to describe
   // properties which can be used for cleaner code in html file.

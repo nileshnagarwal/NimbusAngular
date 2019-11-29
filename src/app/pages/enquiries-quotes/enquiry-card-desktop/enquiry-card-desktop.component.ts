@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EnquiryCardHelper } from '../../../common/functions/enquiry-card';
+import { EnquiryHelper } from '../../../common/functions/enquiry-helper';
 import { Enquiry } from '../../../common/interfaces/enquiry';
 
 @Component({
@@ -17,11 +17,11 @@ export class EnquiryCardDesktopComponent implements OnInit {
   @Input() enquiry: Enquiry;
 
   getLocality(enquiry: Enquiry, src_dest) {
-    return EnquiryCardHelper.getLocality(enquiry, src_dest);
+    return EnquiryHelper.getLocality(enquiry, src_dest);
   }
 
   getVehicleIcon(vehicleType) {
-    return EnquiryCardHelper.getVehicleIcon(vehicleType);
+    return EnquiryHelper.getVehicleIcon(vehicleType);
   }
 
 }

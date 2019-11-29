@@ -1,6 +1,7 @@
 import { Enquiry } from '../interfaces/enquiry';
+import { of } from 'rxjs';
 
-export class EnquiryCardHelper {
+export class EnquiryHelper {
 
     static getLocality(enquiry: Enquiry, src_dest) {
         // Check if source or destination
@@ -27,6 +28,19 @@ export class EnquiryCardHelper {
         if (vehicleType) {
             return '..\\..\\..\\..\\assets\\images\\' + vehicleType.toString() + '.png';
         } else return null;
+    }
+
+    static getCursor(response) {
+      const next = response.body['next'];
+          console.log('next: ', next);
+          if (next) {
+            const searchParams = new URLSearchParams(next.toString().split('?')[1]);
+            console.log('searchParams: ', searchParams);
+            console.log(searchParams.get('cursor'));
+            const cursor = searchParams.has('cursor') ? of(searchParams.get('cursor')) : of(null);
+            console.log('Cursor: ', cursor);
+            return cursor;
+          } else return of(null);
     }
 
 }
