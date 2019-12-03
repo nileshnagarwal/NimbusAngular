@@ -39,9 +39,9 @@ export class EnquiriesSearchComponent implements OnInit {
   @ViewChild('destRef', { static: true }) destRef: GooglePlaceDirective;
 
   ngOnInit() {
-    this.vehicleTypeService.getVehicleType().
+    this.vehicleTypeService.getVehicleTypeCategoryWise().
       subscribe(response => {
-        this.vehicleTypeOptions = response.body.
+        this.vehicleCatOptions = response.body.
           map(responseMap => responseMap);
       });
 
@@ -49,7 +49,7 @@ export class EnquiriesSearchComponent implements OnInit {
   }
 
   enquiriesSearchForm: FormGroup;
-  vehicleTypeOptions: VehicleType[];
+  vehicleCatOptions: Object[];
   statusOptions: string[];
   $data: Observable<any>;
   $cursor: Observable<string>;

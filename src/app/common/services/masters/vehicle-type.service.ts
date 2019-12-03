@@ -14,6 +14,7 @@ export class VehicleTypeService {
 
   private header;
   private url = environment.baseUrl + '/masters/vehicletype/';
+  private categoryWiseUrl = this.url + 'categorywise/';
 
   addVehicleType(vehicleType) {
     return this.http
@@ -26,6 +27,15 @@ export class VehicleTypeService {
   getVehicleType(): Observable<HttpResponse<VehicleType[]>> {
     return this.http
       .get<VehicleType[]>(this.url,
+      {
+        observe: 'response',
+        headers: this.header,
+      });
+  }
+
+  getVehicleTypeCategoryWise(): Observable<HttpResponse<Object[]>> {
+    return this.http
+      .get<Object[]>(this.categoryWiseUrl,
       {
         observe: 'response',
         headers: this.header,
