@@ -41,11 +41,11 @@ export class EnquiriesService {
     } else {
       return this.http
       .get<Enquiry[]>(this.url,
-        {          
+        {
           observe: 'response',
           headers: this.header,
         });
-    }    
+    }
   }
 
   getEnquiryById(id) {

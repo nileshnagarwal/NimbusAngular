@@ -1,6 +1,5 @@
 import { EnquiryHelper } from './../../../common/functions/enquiry-helper';
 import { EnquiriesService } from './../../../common/services/enquiries-quotes/enquiries.service';
-import { VehicleType } from './../../../common/interfaces/vehicle-type';
 import { VehicleTypeService } from './../../../common/services/masters/vehicle-type.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -109,7 +108,6 @@ export class EnquiriesSearchComponent implements OnInit {
     this.enquiriesSearchForm.reset();
   }
 
-  
 
   // The following get functions are used to describe
   // properties which can be used for cleaner code in html file.

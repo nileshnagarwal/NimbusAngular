@@ -73,4 +73,5 @@ export const routedComponents = [
   EnquiriesViewComponent,
   QuotesReportComponent,
   EnquiriesSearchComponent,
+  EnquiryListComponent,
 ];

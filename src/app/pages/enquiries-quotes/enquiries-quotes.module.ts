@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmEnquiryService } from './../../common/services/enquiries-quotes/confirm-enquiry.service';
 import { QuotesComponent } from './quotes/quotes.component';
@@ -18,11 +19,9 @@ import { AgmCoreModule } from '@agm/core';
 import { TransporterService } from '../../common/services/masters/transporter.service';
 import { TransporterComponent } from '../masters/transporter/transporter.component';
 import { EnquiryConfirmComponent } from './enquiry-confirm/enquiry-confirm.component';
-import { EnquiriesSearchComponent } from './enquiries-search/enquiries-search.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { EnquiriesTableComponent } from './enquiries-table/enquiries-table.component';
 import { NbCardModule, NbListModule } from '@nebular/theme';
-import { EnquiryListComponent } from './enquiry-list/enquiry-list.component';
 import { PipesModule } from '../../common/modules/pipes/pipes.module';
 import { EnquiryCardMobileComponent } from './enquiry-card-mobile/enquiry-card-mobile.component';
 import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card-desktop.component';
@@ -46,13 +45,12 @@ import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card
     ReactiveFormsModule,
     NbListModule,
     PipesModule,
+    NgbModule,
   ],
   declarations: [
     ...routedComponents,
     EnquiryConfirmComponent,
-    EnquiriesSearchComponent,
     EnquiriesReportComponent,
-    EnquiryListComponent,
     EnquiryCardMobileComponent,
     EnquiryCardDesktopComponent,
   ],
@@ -67,13 +65,14 @@ import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card
     // as Modal requires a new component instance to
     // be injected
     TransporterComponent,
+    EnquiriesViewComponent,
   ],
   entryComponents: [
-    EnquiriesViewComponent,
     TransporterComponent,
     QuotesComponent,
     EnquiryConfirmComponent,
     EnquiriesTableComponent,
+    EnquiriesViewComponent,
   ],
   exports: [
     FormsModule,

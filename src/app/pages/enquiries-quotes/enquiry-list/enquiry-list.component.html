@@ -1,11 +1,11 @@
 <nb-list *ngIf="!mobile" nbInfiniteList listenWindowScroll [threshold]="500" (bottomThreshold)="loadNext()">
-  <nb-list-item *ngFor = "let enquiry of enquiriesList">
+  <nb-list-item *ngFor = "let enquiry of enquiriesList" (click)="viewEnquiry(enquiry)">
     <ngx-enquiry-card-desktop [enquiry]="enquiry"></ngx-enquiry-card-desktop>
   </nb-list-item> 
 </nb-list>
 
 <nb-list *ngIf="mobile && !isResizing" nbInfiniteList listenWindowScroll [threshold]="500" (bottomThreshold)="loadNext()">
-  <nb-list-item *ngFor = "let enquiry of enquiriesList">
+  <nb-list-item *ngFor = "let enquiry of enquiriesList" (click)="viewEnquiry(enquiry)">
     <ngx-enquiry-card-mobile [enquiry] = "enquiry"></ngx-enquiry-card-mobile>
   </nb-list-item> 
 </nb-list>

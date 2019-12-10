@@ -24,23 +24,23 @@ export class EnquiryHelper {
         } else return null;
     }
 
+    // Generate path for vehicle icon depending on vehicleType received
     static getVehicleIcon(vehicleType) {
         if (vehicleType) {
             return '..\\..\\..\\..\\assets\\images\\' + vehicleType.toString() + '.png';
         } else return null;
     }
 
+    // Get cursor received with response. Cursor is required to go to next page.
     static getCursor(response) {
+      // Get next page url from response
       const next = response.body['next'];
-          console.log('next: ', next);
-          if (next) {
+          if (next) { // If next is not falsy
+            // Extract the cursor from url by splitting the url by ?
+            // And then getting the param 'cursor' from the url
             const searchParams = new URLSearchParams(next.toString().split('?')[1]);
-            console.log('searchParams: ', searchParams);
-            console.log(searchParams.get('cursor'));
             const cursor = searchParams.has('cursor') ? of(searchParams.get('cursor')) : of(null);
-            console.log('Cursor: ', cursor);
             return cursor;
           } else return of(null);
     }
-
 }
