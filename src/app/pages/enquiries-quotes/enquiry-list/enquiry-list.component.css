@@ -2,6 +2,14 @@ nb-list-item {
   border: 0;
 }
 
+ngx-enquiry-card-desktop {
+  cursor: pointer;
+}
+
+ngx-enquiry-card-mobile {
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }
