@@ -4,7 +4,7 @@ import { ValidatorFn, AbstractControl } from '@angular/forms';
 // Since we want to take an argument with validator which is not possible with
 // ValidatorFn, we have to create a function which takes the parameter as inpur and
 // return the ValidatorFn from this function.
-export function googlePlaceValidator(place: Address | null): ValidatorFn {
+export function googlePlaceValidator(place: Address | null, formatedValue: string | null): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
     // How to handle not required fields? If a value is not empty, we will
     // conduct the validation normally. But, if a value is is empty then we
@@ -14,9 +14,9 @@ export function googlePlaceValidator(place: Address | null): ValidatorFn {
         return {'invalidPlace':
           {inputValue: control.value, 'place': null},
         };
-      } else if (place.name + ', ' + place.formatted_address !== control.value) {
+      } else if (formatedValue !== control.value) {
         return {'invalidPlace':
-          {inputValue: control.value, googlePlaceValue: place.formatted_address, 'place': place},
+          {inputValue: control.value, googlePlaceValue: formatedValue, 'place': place},
         };
       } else {
         return null;

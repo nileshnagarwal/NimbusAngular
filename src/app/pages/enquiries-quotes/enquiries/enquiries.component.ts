@@ -17,6 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VehicleTypeComponent } from '../../masters/vehicle-type/vehicle-type.component';
 import { NbToastrService } from '@nebular/theme';
 import { loadTypeOptions, enquiryStatusOpt } from '../../../common/misc/api-constants';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'ngx-enquiries',
@@ -111,6 +112,9 @@ export class EnquiriesComponent implements OnInit {
     componentRestrictions: {country: 'in'},
   };
 
+  // Check if in production development mode
+  productionMode = environment.production;
+
   // Submit function for the form
   addEnquiry(enquiriesForm) {
     this.service.addEnquiry(enquiriesForm.value)
@@ -192,6 +196,11 @@ export class EnquiriesComponent implements OnInit {
       lat: new FormControl('', []),
       lng: new FormControl('', []),
       place_id_agm: new FormControl('', []),
+      address: new FormControl('', []),
+      sublocality_level_1: new FormControl('', []),
+      locality: new FormControl('', []),
+      administrative_area_level_2: new FormControl('', []),
+      administrative_area_level_1: new FormControl('', []),
     }),
     comments: new FormControl('', []),
     loading_date: new FormControl('', [
@@ -218,12 +227,14 @@ export class EnquiriesComponent implements OnInit {
   // Below are AddressChange handlers for Source, Destination and Return.
   public handleSourceAddressChange(address: Address, i: number) {
     // First we update the value selected from suggestions in input box
-
+    let formatedValue: string;
     // If the place name is not present in formatted adress, concat the name with the address
     if (address.formatted_address.indexOf(address.name) < 0) {
-      this.sources.controls[i].get('place').setValue(address.name + ', ' + address.formatted_address);
+      formatedValue = address.name + ', ' + address.formatted_address;
+      this.sources.controls[i].get('place').setValue(formatedValue);
     } else {
-      this.sources.controls[i].get('place').setValue(address.formatted_address);
+      formatedValue = address.formatted_address;
+      this.sources.controls[i].get('place').setValue(formatedValue);
     }
 
     // Next we set googlePlaceValidator passing the address. This was not
@@ -231,7 +242,7 @@ export class EnquiriesComponent implements OnInit {
     // this value is null.
     this.sources.controls[i].get('place').setValidators([
       Validators.required,
-      googlePlaceValidator(address),
+      googlePlaceValidator(address, formatedValue),
     ]);
     this.sources.controls[i].get('place').updateValueAndValidity();
     // Final step we store the lat and long from address
@@ -239,31 +250,79 @@ export class EnquiriesComponent implements OnInit {
     this.sources.controls[i].get('lng').setValue(address.geometry.location.lng());
     this.sources.controls[i].get('place_id_agm').setValue(address.place_id);
     // const obj = address.address_components.find(adrComp => adrComp.types[0] === 'administrative_area_level_2');
+    // address
+    // sublocality_level_1
+    // administrative_area_level_2
+    // administrative_area_level_1
+    this.sources.controls[i].get('address').
+      setValue(address);
+    this.sources.controls[i].get('locality').
+      setValue(this.getAddressComponents(address, 'locality'));
+    this.sources.controls[i].get('sublocality_level_1').
+      setValue(this.getAddressComponents(address, 'sublocality_level_1'));
+    this.sources.controls[i].get('administrative_area_level_2').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_2'));
+    this.sources.controls[i].get('administrative_area_level_1').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_1'));
   }
 
   public handleDestinationAddressChange(address: Address, i: number) {
     // Refer handleSourceAddressChange() for explanation
-    this.destinations.controls[i].get('place').setValue(address.name + ', ' + address.formatted_address);
+    let formatedValue: string;
+    if (address.formatted_address.indexOf(address.name) < 0) {
+      formatedValue = address.name + ', ' + address.formatted_address;
+      this.destinations.controls[i].get('place').setValue(formatedValue);
+    } else {
+      formatedValue = address.formatted_address;
+      this.destinations.controls[i].get('place').setValue(formatedValue);
+    }
     this.destinations.controls[i].get('place').setValidators([
       Validators.required,
-      googlePlaceValidator(address),
+      googlePlaceValidator(address, formatedValue),
     ]);
     this.destinations.controls[i].get('place').updateValueAndValidity();
     this.destinations.controls[i].get('lat').setValue(address.geometry.location.lat());
     this.destinations.controls[i].get('lng').setValue(address.geometry.location.lng());
     this.destinations.controls[i].get('place_id_agm').setValue(address.place_id);
+    this.destinations.controls[i].get('address').
+      setValue(address);
+    this.destinations.controls[i].get('locality').
+      setValue(this.getAddressComponents(address, 'locality'));
+    this.destinations.controls[i].get('sublocality_level_1').
+      setValue(this.getAddressComponents(address, 'sublocality_level_1'));
+    this.destinations.controls[i].get('administrative_area_level_2').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_2'));
+    this.destinations.controls[i].get('administrative_area_level_1').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_1'));
   }
 
   public handleReturnAddressChange(address: Address) {
     // Refer handleSourceAddressChange() for explanation
-    this.return.get('place').setValue(address.name + ', ' + address.formatted_address);
+    let formatedValue: string;
+    if (address.formatted_address.indexOf(address.name) < 0) {
+      formatedValue = address.name + ', ' + address.formatted_address;
+      this.return.get('place').setValue(formatedValue);
+    } else {
+      formatedValue = address.formatted_address;
+      this.return.get('place').setValue(formatedValue);
+    }
     this.return.get('place').setValidators([
-      googlePlaceValidator(address),
+      googlePlaceValidator(address, formatedValue),
     ]);
     this.return.get('place').updateValueAndValidity();
     this.return.get('lat').setValue(address.geometry.location.lat());
     this.return.get('lng').setValue(address.geometry.location.lng());
     this.return.get('place_id_agm').setValue(address.place_id);
+    this.return.get('address').
+      setValue(address);
+    this.return.get('locality').
+      setValue(this.getAddressComponents(address, 'locality'));
+    this.return.get('sublocality_level_1').
+      setValue(this.getAddressComponents(address, 'sublocality_level_1'));
+    this.return.get('administrative_area_level_2').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_2'));
+    this.return.get('administrative_area_level_1').
+      setValue(this.getAddressComponents(address, 'administrative_area_level_1'));
   }
 
   // Below we have functions to add and remove FormControls to
@@ -276,6 +335,11 @@ export class EnquiriesComponent implements OnInit {
       lat: new FormControl('', [Validators.required]),
       lng: new FormControl('', [Validators.required]),
       place_id_agm: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      sublocality_level_1: new FormControl('', []),
+      locality: new FormControl('', []),
+      administrative_area_level_2: new FormControl('', []),
+      administrative_area_level_1: new FormControl('', []),
     }));
   }
 
@@ -294,6 +358,11 @@ export class EnquiriesComponent implements OnInit {
       lat: new FormControl('', [Validators.required]),
       lng: new FormControl('', [Validators.required]),
       place_id_agm: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      sublocality_level_1: new FormControl('', []),
+      locality: new FormControl('', []),
+      administrative_area_level_2: new FormControl('', []),
+      administrative_area_level_1: new FormControl('', []),
     }));
   }
 
@@ -361,6 +430,11 @@ export class EnquiriesComponent implements OnInit {
     'Enquiry Submitted',
       {status, preventDuplicates, icon, duration, position},
     );
+  }
+
+  getAddressComponents(address: Address, componentName: string) {
+    const component = address.address_components.find(adrComp => adrComp.types[0] === componentName);
+    return component ? component.long_name : null;
   }
 
   // Below we handle error messages for each field individually
