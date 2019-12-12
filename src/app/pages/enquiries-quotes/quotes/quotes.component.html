@@ -94,7 +94,12 @@
           </label>
         </div>
         <div class="col-lg-12">
-          <label class="custom-control custom-radio inline-block">
+            <nb-radio-group formControlName="vehicle_avail">
+              <nb-radio value="yes">Yes</nb-radio>
+              <nb-radio value="no">No</nb-radio>
+              <nb-radio value="na">Didn't Bother</nb-radio>
+            </nb-radio-group>
+          <!-- <label class="custom-control custom-radio inline-block">
             <input type="radio" class="custom-control-input" 
               name="vehicle_avail" 
               formControlName="vehicle_avail"
@@ -117,7 +122,7 @@
               checked>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Didn't Bother</span>
-          </label>
+          </label> -->
         </div>
       </div>
 
@@ -131,7 +136,12 @@
           </label>
         </div>
         <div class="col-lg-12">
-          <label class="custom-control custom-radio inline-block">
+          <nb-radio-group formControlName="including_fine">
+            <nb-radio value="yes">Yes</nb-radio>
+            <nb-radio value="no">No</nb-radio>
+            <nb-radio value="na">Normal Cargo</nb-radio>
+          </nb-radio-group>
+          <!-- <label class="custom-control custom-radio inline-block">
             <input type="radio" class="custom-control-input" 
               name="including_fine" 
               formControlName="including_fine"
@@ -154,7 +164,7 @@
               checked>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Normal Cargo</span>
-          </label>
+          </label> -->
         </div>
       </div>
       

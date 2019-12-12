@@ -9,3 +9,7 @@ nb-card {
 .full-width {
   width: 100%;
 }
+
+nb-radio-group {
+  display: flex;
+}

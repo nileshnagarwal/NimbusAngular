@@ -21,7 +21,7 @@ import { TransporterComponent } from '../masters/transporter/transporter.compone
 import { EnquiryConfirmComponent } from './enquiry-confirm/enquiry-confirm.component';
 import { EnquiriesReportComponent } from './enquiries-report/enquiries-report.component';
 import { EnquiriesTableComponent } from './enquiries-table/enquiries-table.component';
-import { NbCardModule, NbListModule } from '@nebular/theme';
+import { NbCardModule, NbListModule, NbRadioModule } from '@nebular/theme';
 import { PipesModule } from '../../common/modules/pipes/pipes.module';
 import { EnquiryCardMobileComponent } from './enquiry-card-mobile/enquiry-card-mobile.component';
 import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card-desktop.component';
@@ -46,6 +46,7 @@ import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card
     NbListModule,
     PipesModule,
     NgbModule,
+    NbRadioModule,
   ],
   declarations: [
     ...routedComponents,
