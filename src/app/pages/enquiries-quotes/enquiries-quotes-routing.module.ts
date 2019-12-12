@@ -40,15 +40,6 @@ const routes: Routes = [{
   },
   {
     path: '',
-    component: EnquiryListComponent,
-    children: [{
-      path: 'enquiry-view',
-      canActivate: [AuthGuardService],
-      component: EnquiryListComponent,
-    }],
-  },
-  {
-    path: '',
     component: EnquiriesSearchComponent,
     children: [{
       path: 'enquiries-search',

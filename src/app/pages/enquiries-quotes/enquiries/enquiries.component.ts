@@ -17,7 +17,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VehicleTypeComponent } from '../../masters/vehicle-type/vehicle-type.component';
 import { NbToastrService } from '@nebular/theme';
 import { loadTypeOptions, enquiryStatusOpt } from '../../../common/misc/api-constants';
-import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'ngx-enquiries',
@@ -111,9 +110,6 @@ export class EnquiriesComponent implements OnInit {
   placesOptions = {
     componentRestrictions: {country: 'in'},
   };
-
-  // Check if in production development mode
-  productionMode = environment.production;
 
   // Submit function for the form
   addEnquiry(enquiriesForm) {

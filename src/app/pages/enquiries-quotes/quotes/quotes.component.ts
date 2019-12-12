@@ -43,8 +43,8 @@ export class QuotesComponent implements OnInit {
 
   }
 
-  @Input() enquiryId: string;
-  @Input() enquiryNo: number;
+  @Input() enquiryId: number;
+  @Input() enquiryNo: string;
   @Input() isModalOpen: boolean;
   @Input() modalRef: NgbModalRef;
   @Output() refreshTable = new EventEmitter();
