@@ -51,7 +51,7 @@ export class EnquiriesSearchComponent implements OnInit {
   vehicleCatOptions: Object[];
   statusOptions: string[];
   $data: Observable<any>;
-  $cursor: Observable<string>;
+  cursor: string | null;
   searchParams: URLSearchParams;
 
   // This is used in template to restrict Google Places
@@ -87,7 +87,7 @@ export class EnquiriesSearchComponent implements OnInit {
     this.service.searchEnquiry(enquiriesSearchForm.value)
       .subscribe(response => {
         this.$data = of(response.body['results']);
-        this.$cursor = EnquiryHelper.getCursor(response);
+        this.cursor = EnquiryHelper.getCursor(response);
       });
   }
 
@@ -95,7 +95,7 @@ export class EnquiriesSearchComponent implements OnInit {
     // Reset the table to show all enquiries
     this.service.getEnquiry(null)
     .subscribe(response => {
-      this.$cursor = EnquiryHelper.getCursor(response);
+      this.cursor = EnquiryHelper.getCursor(response);
       this.$data = of(response.body['results']);
     });
     // Reset the GooglePlaceDirective

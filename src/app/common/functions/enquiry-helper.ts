@@ -1,5 +1,4 @@
 import { Enquiry } from '../interfaces/enquiry';
-import { of } from 'rxjs';
 
 export class EnquiryHelper {
 
@@ -39,8 +38,8 @@ export class EnquiryHelper {
             // Extract the cursor from url by splitting the url by ?
             // And then getting the param 'cursor' from the url
             const searchParams = new URLSearchParams(next.toString().split('?')[1]);
-            const cursor = searchParams.has('cursor') ? of(searchParams.get('cursor')) : of(null);
+            const cursor = searchParams.has('cursor') ? (searchParams.get('cursor')) : null;
             return cursor;
-          } else return of(null);
+          } else return null;
     }
 }
