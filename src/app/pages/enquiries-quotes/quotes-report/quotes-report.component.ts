@@ -76,6 +76,10 @@ export class QuotesReportComponent implements OnInit {
         title: 'Weight',
         type: 'number',
       },
+      traffic_incharge_name: {
+        title: 'TI',
+        type: 'string',
+      },
     },
     actions: {
       add : false,

@@ -1,4 +1,3 @@
-import { EnquiryHelper } from './../../../common/functions/enquiry-helper';
 import { EnquiriesService } from './../../../common/services/enquiries-quotes/enquiries.service';
 import { VehicleTypeService } from './../../../common/services/masters/vehicle-type.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -51,7 +50,7 @@ export class EnquiriesSearchComponent implements OnInit {
   vehicleCatOptions: Object[];
   statusOptions: string[];
   $data: Observable<any>;
-  cursor: string | null;
+  next: string | null;
   searchParams: URLSearchParams;
 
   // This is used in template to restrict Google Places
@@ -87,7 +86,7 @@ export class EnquiriesSearchComponent implements OnInit {
     this.service.searchEnquiry(enquiriesSearchForm.value)
       .subscribe(response => {
         this.$data = of(response.body['results']);
-        this.cursor = EnquiryHelper.getCursor(response);
+        this.next = response.body['next'];
       });
   }
 
@@ -95,7 +94,7 @@ export class EnquiriesSearchComponent implements OnInit {
     // Reset the table to show all enquiries
     this.service.getEnquiry(null)
     .subscribe(response => {
-      this.cursor = EnquiryHelper.getCursor(response);
+      this.next = response.body['next'];
       this.$data = of(response.body['results']);
     });
     // Reset the GooglePlaceDirective

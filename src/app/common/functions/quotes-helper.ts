@@ -35,6 +35,7 @@ export class QuotesHelper {
           break;
         }
       }
+      quote['traffic_incharge_name'] = quote['traffic_incharge']['first_name'];
     });
     return quotes;
   }

@@ -3,6 +3,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { pageSize } from '../../../common/misc/api-constants';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EnquiriesViewComponent } from '../enquiries-view/enquiries-view.component';
+import { MiscService } from '../../../common/services/misc/misc.service';
 
 @Component({
   selector: 'ngx-enquiry-list',
@@ -12,7 +13,8 @@ import { EnquiriesViewComponent } from '../enquiries-view/enquiries-view.compone
 export class EnquiryListComponent implements OnInit {
 
   constructor(
-    private service: EnquiriesService,
+    private enqService: EnquiriesService,
+    private miscService: MiscService,
     private modalService: NgbModal,
   ) { }
 
@@ -22,7 +24,7 @@ export class EnquiryListComponent implements OnInit {
   }
 
   @Input() enquiriesList = [];
-  @Input() cursor: string = null;
+  @Input() next: string = null;
   mobile: Boolean; // Keeps track if the screen if mobile or desktop
   loading = false;
   placeholders = [];
@@ -34,7 +36,6 @@ export class EnquiryListComponent implements OnInit {
   loadNext() {
     // If already loading, return
     if (this.loading) { return; }
-
     // If above conditions are not satisfied
     // Set loading to true
     this.loading = true;
@@ -44,11 +45,10 @@ export class EnquiryListComponent implements OnInit {
     // If input data has been provided, use the same.
     if (!(Array.isArray(this.enquiriesList)) || this.enquiriesList.length === 0) {
       // Load data for next page
-      this.service.getEnquiry(this.cursor)
+      this.enqService.getEnquiry(this.next)
       .subscribe(res => {
-        // Set Cursor
-        const searchParams = new URLSearchParams(res['body']['next'].toString().split('?')[1]);
-        this.cursor = searchParams.get('cursor');
+        // Set next url
+        this.next = res.body['next'];
         // Reset placeholder to blank array
         this.placeholders = [];
         // Set enquiriesList
@@ -60,15 +60,11 @@ export class EnquiryListComponent implements OnInit {
         this.pageToLoadNext++;
       });
     } else {
-      if (this.cursor) {
-        this.service.getEnquiry(this.cursor)
+      if (this.next) {
+        this.miscService.getResUrl(this.next)
           .subscribe(res => {
-            // Set Cursor
-            const next = res['body']['next'];
-            if (next) {
-              const searchParams = new URLSearchParams(res['body']['next'].toString().split('?')[1]);
-              this.cursor = searchParams.get('cursor');
-            } else this.cursor = null;
+            // Set next url
+            this.next = res['body']['next'];
             // Reset placeholder to blank array
             this.placeholders = [];
             // Set enquiriesList
