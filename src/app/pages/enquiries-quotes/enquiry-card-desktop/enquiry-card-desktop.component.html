@@ -33,7 +33,7 @@
           <div class="vehicle-type"><span class="h2-card">{{ enquiry['vehicle_type_obj'][0]['category'] }}</span><br>
           <span class="h4-card">Load</span></div>
         </div>              
-        <div class="h2-card load-size">{{ enquiry.load_size | feetInches }} | 20 Tons</div>
+        <div class="h2-card load-size">{{ enquiry.load_size | feetInches }} | {{ enquiry.weight }} Tons</div>
       </div>
       <div class="other-details">
         <div class="load-type h2-card">{{ enquiry.load_type }} Cargo</div>
