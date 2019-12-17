@@ -10,6 +10,6 @@ nb-card {
   width: 100%;
 }
 
-nb-radio-group {
-  display: flex;
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
 }

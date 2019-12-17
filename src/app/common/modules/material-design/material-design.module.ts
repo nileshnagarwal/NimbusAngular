@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule,
   MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatGridListModule,
   MatDividerModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule,
+  MatRadioModule} from '@angular/material';
 import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} from '@angular/material';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} f
     MatGridListModule,
     MatDividerModule,
     MatExpansionModule,
+    MatRadioModule,
   ],
   exports: [
     MatButtonModule,
@@ -39,6 +41,7 @@ import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} f
     MatGridListModule,
     MatDividerModule,
     MatExpansionModule,
+    MatRadioModule,
   ],
   providers: [
     MatDatepickerModule,
