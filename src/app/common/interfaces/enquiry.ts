@@ -20,4 +20,5 @@ export interface Enquiry {
     places_source?: string[];
     places_destination?: string[];
     load_size?: string;
+    load_type_str?: string;
 }
