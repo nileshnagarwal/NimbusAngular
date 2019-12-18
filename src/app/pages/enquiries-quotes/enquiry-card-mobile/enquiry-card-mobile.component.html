@@ -33,10 +33,10 @@
         <div class="vehicle-load">
           <div class="vehicle">
             <div class="vehicle-icon"><img [src]="getVehicleIcon(enquiry['vehicle_type_obj'][0]['category'])"></div>
-            <div class="vehicle-type"><span class="h2-card">{{ enquiry['vehicle_type_obj'][0]['category'] }}</span><br>
-            <span class="h4-card">Load</span></div>
-          </div>              
-        <div class="h2-card load-size">{{ enquiry.load_size | feetInches }} | {{ enquiry.weight }} Tons</div>
+            <!-- <div class="vehicle-type"><span class="h3-card">{{ enquiry['vehicle_type_obj'][0]['category'] }}</span><br>
+            <span class="h4-card">Load</span></div> -->
+          </div>           
+        <div class="h1-card load-size">{{ enquiry.load_size | feetInches }} | {{ enquiry.weight | number:'.0-1' }} MT</div>
       </div>
         <hr class="gray-line" />
         <div class="other-details">

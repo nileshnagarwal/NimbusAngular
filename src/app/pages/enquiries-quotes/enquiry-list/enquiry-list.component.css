@@ -28,6 +28,10 @@ ngx-enquiry-card-mobile {
 
 @media only screen and (max-width: 480px) {
 
+  nb-list-item {
+    padding: 0;
+  }
+
   nb-card-header {
     border-bottom: none;
     text-align: right;
@@ -205,7 +209,7 @@ ngx-enquiry-card-mobile {
   
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
   nb-card-header {
     border-bottom: none;
     text-align: right;
