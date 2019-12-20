@@ -13,8 +13,8 @@ export const enquiryStatusOpt = {
 };
 
 export const loadTypeOptions = {
-    'Normal': 1,
-    'ODC': 2,
+    'ODC': 1,
+    'Normal': 2,
     'Container': 3,
     'Part': 4,
 };
