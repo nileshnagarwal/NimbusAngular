@@ -16,7 +16,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VehicleTypeComponent } from '../../masters/vehicle-type/vehicle-type.component';
 import { NbToastrService } from '@nebular/theme';
-import { loadTypeOptions, enquiryStatusOpt } from '../../../common/misc/api-constants';
+import { LoadTypeOptions, enquiryStatusOpt } from '../../../common/misc/api-constants';
 
 @Component({
   selector: 'ngx-enquiries',
@@ -103,7 +103,8 @@ export class EnquiriesComponent implements OnInit {
   vehicleTypeOptions: any[];
   vehicleBodyOptions: any[];
   extraExpensesOptions: any[];
-  loadTypeOptionsArr: any[] = Object.entries(loadTypeOptions);
+  loadTypeOptions = new LoadTypeOptions();
+  loadTypeOptionsArr: any[] = Object.entries(this.loadTypeOptions.loadTypeOptionValues);
 
   // This is used in template to restrict Google Places
   // text box to India.
@@ -416,7 +417,7 @@ export class EnquiriesComponent implements OnInit {
 
   // Set load type form control value on field selection
   setLoadType(event) {
-    const value = loadTypeOptions[event['option']['value']];
+    const value = this.loadTypeOptions.loadTypeOptionValues[event['option']['value']];
     this.load_type_new.setValue(value);
   }
 

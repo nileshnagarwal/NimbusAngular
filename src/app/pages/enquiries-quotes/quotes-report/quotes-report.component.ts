@@ -48,13 +48,29 @@ export class QuotesReportComponent implements OnInit {
         title: 'Transporter',
         type: 'string',
       },
-      freight: {
-        title: 'Freight',
+      freight_normal_org: {
+        title: 'Freight Org',
         type: 'number',
       },
-      including_fine: {
-        title: 'Including Fine?',
-        type: 'string',
+      freight_incl_org: {
+        title: 'Incl Fine Freight Org',
+        type: 'number',
+      },
+      freight_excl_org: {
+        title: 'Excl Fine Freight Org',
+        type: 'number',
+      },
+      freight_normal_rev: {
+        title: 'Freight Rev',
+        type: 'number',
+      },
+      freight_incl_rev: {
+        title: 'Incl Fine Freight Rev',
+        type: 'number',
+      },
+      freight_excl_rev: {
+        title: 'Excl Fine Freight Rev',
+        type: 'number',
       },
       vehicle_avail: {
         title: 'Vehicle Available?',

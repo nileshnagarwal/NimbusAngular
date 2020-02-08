@@ -4,8 +4,9 @@ export interface Quote {
     quote_id?: number;
     enquiry_id: number;
     transporter_id: number;
-    freight: number;
-    including_fine: string;
+    freight_normal?: number;
+    freight_incl?: number;
+    freight_excl?: number;
     vehicle_avail: string;
     vehicle_type_id: number[];
     vehicle_body_id?: number[];

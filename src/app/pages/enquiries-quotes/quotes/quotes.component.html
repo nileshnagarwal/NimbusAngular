@@ -69,19 +69,43 @@
         </div>
       </div>
       
-      <!-- Freight -->
-      <div class="form-group row">
+      <!-- Normal Freight -->
+      <div class="form-group row" *ngIf='freightNormalVisibility'>
         <div class="col-md-12 col-lg-6">
           <mat-form-field class="full-width">
             <input 
               matInput
-              formControlName="freight"
-              id="freight" 
-              name="freight"
+              formControlName="freight_normal"
+              id="freight_normal" 
+              name="freight_normal"
               type="number"           
-              placeholder="Freight">
+              placeholder="Normal Freight">
           </mat-form-field>
         </div>
+      </div>
+      <div class="form-group row" *ngIf='!freightNormalVisibility'>
+        <div class="col-md-6 col-lg-3">
+          <mat-form-field class="full-width">
+            <input 
+              matInput
+              formControlName="freight_incl"
+              id="freight_incl" 
+              name="freight_incl"
+              type="number"           
+              placeholder="Incl Fine Freight">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <mat-form-field class="full-width">
+            <input 
+              matInput
+              formControlName="freight_excl"
+              id="freight_excl" 
+              name="freight_excl"
+              type="number"           
+              placeholder="Excl Fine Freight">
+          </mat-form-field>
+        </div>                
       </div>
 
       <!-- Vehicle Availability -->
@@ -122,48 +146,6 @@
               checked>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Didn't Bother</span>
-          </label> -->
-        </div>
-      </div>
-
-      <!-- Including Fine? -->
-      <div class="form-group row">
-        <div class="col-lg-12">
-          <label 
-            for="including_fine" 
-            class="col-form-label">
-            Including Fine?
-          </label>
-        </div>
-        <div class="col-lg-12">
-          <mat-radio-group formControlName="including_fine">
-            <mat-radio-button value="yes">Yes</mat-radio-button>
-            <mat-radio-button value="no">No</mat-radio-button>
-            <mat-radio-button value="na">Normal Cargo</mat-radio-button>
-          </mat-radio-group>
-          <!-- <label class="custom-control custom-radio inline-block">
-            <input type="radio" class="custom-control-input" 
-              name="including_fine" 
-              formControlName="including_fine"
-              value="yes">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Yes</span>
-          </label>
-          <label class="custom-control custom-radio inline-block">
-            <input type="radio" class="custom-control-input" name="including_fine"  
-              formControlName="including_fine"
-              value="no">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">No</span>
-          </label>
-          <label class="custom-control custom-radio inline-block">
-            <input type="radio" class="custom-control-input" 
-              name="including_fine"
-              formControlName="including_fine"
-              value="na"
-              checked>
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Normal Cargo</span>
           </label> -->
         </div>
       </div>

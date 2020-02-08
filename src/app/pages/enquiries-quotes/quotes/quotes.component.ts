@@ -10,6 +10,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { TransporterComponent } from '../../masters/transporter/transporter.component';
 import { NbToastrService } from '@nebular/theme';
 import { Observable, of } from 'rxjs';
+import { LoadTypeOptions } from '../../../common/misc/api-constants';
 
 @Component({
   selector: 'ngx-quotes',
@@ -41,9 +42,16 @@ export class QuotesComponent implements OnInit {
       this.user_id.setValue(user.user_id);
     });
 
+    // Check if load is odc or normal to toggle visibility of
+    // freight_normal and freight_incl excl fields.
+    const loadTypeOptions: LoadTypeOptions =  new LoadTypeOptions();
+    if (this.loadSize === loadTypeOptions.ftl || this.loadSize === loadTypeOptions.ltl) {
+      this.freightNormalVisibility = true;
+    } else this.freightNormalVisibility = false;
   }
 
   @Input() enquiryId: number;
+  @Input() loadSize: string;
   @Input() enquiryNo: string;
   @Input() isModalOpen: boolean;
   @Input() modalRef: NgbModalRef;
@@ -53,6 +61,7 @@ export class QuotesComponent implements OnInit {
   vehicleBodyOptions: VehicleBody[];
   transFilteredOptions: Transporter[];
   vehicleBodyVisiblity: Observable<Boolean>;
+  freightNormalVisibility: Boolean; // Toggle visibility of freight fields
 
   @ViewChild('transAutoComplete', { static: true }) transAutoComplete: ElementRef;
   // Get reference of FormGroupDirective to reset form on submit
@@ -83,12 +92,9 @@ export class QuotesComponent implements OnInit {
     transporter_id: new FormControl('', [
       Validators.required,
     ]),
-    freight: new FormControl('', [
-      Validators.required,
-    ]),
-    including_fine: new FormControl('', [
-      Validators.required,
-    ]),
+    freight_normal: new FormControl('', []),
+    freight_incl: new FormControl('', []),
+    freight_excl: new FormControl('', []),
     vehicle_avail: new FormControl('', [
       Validators.required,
     ]),
@@ -104,6 +110,15 @@ export class QuotesComponent implements OnInit {
 
   // Submit quote to backend
   addQuote(quotesForm) {
+    // If load is normal set incl and excl rates to null
+    if (this.freightNormalVisibility) {
+      this.freight_excl.setValue(null);
+      this.freight_incl.setValue(null);
+    // Else if load is ODC set freight normal to null
+    } else if (!this.freightNormalVisibility) {
+      this.freight_normal.setValue(null);
+    }
+
     this.service.addQuote(quotesForm.value)
     .subscribe(response => {
       this.toastrShow('success', false, 'bell', '3000', 'top-right');
@@ -199,12 +214,16 @@ export class QuotesComponent implements OnInit {
     return this.quotesForm.get('transporter_id');
   }
 
-  get freight() {
-    return this.quotesForm.get('freight');
+  get freight_normal() {
+    return this.quotesForm.get('freight_normal');
   }
 
-  get including_fine() {
-    return this.quotesForm.get('including fine');
+  get freight_excl() {
+    return this.quotesForm.get('freight_excl');
+  }
+
+  get freight_incl() {
+    return this.quotesForm.get('freight_incl');
   }
 
   get vehicle_avail() {

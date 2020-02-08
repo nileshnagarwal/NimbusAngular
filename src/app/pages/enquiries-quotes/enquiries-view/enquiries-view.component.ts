@@ -177,6 +177,7 @@ export class EnquiriesViewComponent implements OnInit {
     );
     activeModal.componentInstance.enquiryId = this.enquiryId;
     activeModal.componentInstance.enquiryNo = this.response['enquiry_no'];
+    activeModal.componentInstance.loadSize = this.response['load_type_obj']['load_size'];
     activeModal.componentInstance.vehicleTypeOptions = this.response['vehicle_type_obj'];
     activeModal.componentInstance.vehicleBodyOptions = this.response['vehicle_body_obj'];
     activeModal.componentInstance.isModalOpen = true;

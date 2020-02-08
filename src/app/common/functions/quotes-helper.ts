@@ -2,25 +2,11 @@ import { Quote } from '../interfaces/quote';
 
 // This is a helper class having helper functions to work with quotes
 export class QuotesHelper {
-  /* This function is used to convert the values of 'including_fine'
-  and 'vehicle_avail' from backend values to front end values
+  /* This function is used to convert the values of 'vehicle_avail'
+  from backend values to front end values
   Eg. no = No*/
   static quotePropToString(quotes: Quote[]) {
     quotes.map(quote => {
-      switch (quote.including_fine) {
-        case 'na': {
-          quote.including_fine = 'Normal Cargo';
-          break;
-        }
-        case 'yes': {
-          quote.including_fine = 'Yes';
-          break;
-        }
-        case 'no': {
-          quote.including_fine = 'No';
-          break;
-        }
-      }
       switch (quote.vehicle_avail) {
         case 'na': {
           quote.vehicle_avail = 'Didn\'t Bother';

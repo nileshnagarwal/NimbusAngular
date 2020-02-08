@@ -12,11 +12,23 @@ export const enquiryStatusOpt = {
     'FinalisedOrder': 'Confirmed Order',
 };
 
-export const loadTypeOptions = {
-    'ODC': 1,
-    'Normal': 2,
-    'Container': 3,
-    'Part': 4,
-};
+export class LoadTypeOptions {
+
+    odc = 'ODC';
+    normal = 'Normal';
+    container = 'Container';
+    part = 'Part';
+    odcContainer = 'ODC Container';
+    ftl = 'FTL';
+    ltl = 'LTL';
+
+    loadTypeOptionValues = {
+        [this.odc]: 1,
+        [this.normal]: 2,
+        [this.container]: 3,
+        [this.part]: 4,
+        [this.odcContainer]: 5,
+    };
+}
 
 export const pageSize = 20;
