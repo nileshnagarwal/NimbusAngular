@@ -16,6 +16,12 @@ const routes: Routes = [{
         .then(m => m.EnquiriesQuotesModule),
     },
     {
+      path: 'operations',
+      canActivate: [AuthGuardService],
+      loadChildren: () => import('./operations/operations.module')
+        .then(m => m.OperationsModule),
+    },
+    {
       path: 'masters',
       canActivate: [AuthGuardService],
       loadChildren: () => import('./masters/masters.module')

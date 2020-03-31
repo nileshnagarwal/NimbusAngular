@@ -1,0 +1,95 @@
+<nb-card>
+  <nb-card-header>
+    Engage LR
+  </nb-card-header>
+
+  <nb-card-body>    
+    <form
+    [formGroup]="lrEngageForm"
+    (ngSubmit)="engageLr(lrEngageForm)"
+    >
+
+    <!-- we will place our fields here -->
+
+      <div class="form-group row">
+        <div class="col-md-8 col-lg-4">
+          <mat-form-field class="full-width">
+            <input 
+              matInput
+              formControlName="lr_no"
+              id="lr_no" 
+              name="lr_no"
+              type="number"      
+              placeholder="LR No">
+            <mat-error *ngIf="isLrEngaged()">
+              LR is engaged
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Client -->
+      <div class="form-group row">        
+        <div class="col-md-8 col-lg-4">
+          <mat-form-field class="full-width">
+            <input 
+              #clientAutoComplete
+              type="text" 
+              placeholder="Client"
+              id="client"
+              name="client"
+              matInput
+              (click)="filter($event)"
+              (input)="filter($event)"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="clientSelected($event)" [displayWith]=clientDisplayFn>
+              <mat-option #option *ngFor="let clientOpt of clientFilteredOptions" [value]="clientOpt">
+                {{clientOpt.client}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Vehicle No -->
+      <div class="form-group row">
+        <div class="col-md-8 col-lg-4">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              formControlName="vehicle_no"
+              id="vehicle_no" 
+              name="vehicle_no"
+              placeholder="Vehicle No">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Adding the submit button -->
+      <div class="form-group row">
+        <div class="col-md-8 col-lg-4" align="right">          
+          <!-- Clear the Form -->          
+          <button 
+            mat-raised-button
+            type="button"
+            style='margin-right:16px'
+            (click)="clearForm()">
+            CLEAR
+          </button>
+          <button 
+            mat-raised-button color="primary"
+            type="submit" 
+            [disabled]="!lrEngageForm.valid">
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    
+    </form>
+
+    <!-- <pre>
+      {{ enquiriesForm.value | json }}
+    </pre> -->
+
+  </nb-card-body>
+</nb-card>

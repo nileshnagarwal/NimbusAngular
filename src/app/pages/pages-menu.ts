@@ -20,6 +20,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Operations',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Engage LR',
+        link: '/pages/operations/engage-lr',
+      },
+    ],
+  },
+  {
     title: 'Masters',
     icon: 'grid-outline',
     children: [
