@@ -1,0 +1,16 @@
+mat-form-field {
+    width: -webkit-fill-available;
+}
+mat-option {
+    height: fit-content !important;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.consignor {
+    width: 100% !important;
+}
+
+.pad-field {
+    padding-top: 1.15em;
+}

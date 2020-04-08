@@ -27,6 +27,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Engage LR',
         link: '/pages/operations/engage-lr',
       },
+      {
+        title: 'Generate LR',
+        link: '/pages/operations/generate-lr',
+      },
     ],
   },
   {

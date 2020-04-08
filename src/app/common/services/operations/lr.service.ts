@@ -18,13 +18,35 @@ export class LrService {
 
   private header;
   private url = environment.baseUrl + '/operations/';
-  private generateLrUrl = this.url + 'lr_no/';
+  private engageLrUrl = this.url + 'lr_no/';
+  private generateLrUrl = this.url + 'lr/'
   private lrUniqueCheckUrl = this.url + 'lr_unique_check/';
 
-  generateLR(lr: LR): Observable<HttpResponse<LR>> {
+  engageLR(lr: LR): Observable<HttpResponse<LR>> {
+    return this.http.post<LR>(
+      this.engageLrUrl,
+      lr,
+      {
+      headers: this.header,
+      observe: 'response',
+      },
+    );
+  }
+
+  getLrNo(): Observable<HttpResponse<LR[]>> {
+    return this.http.get<LR[]>(
+      this.engageLrUrl,
+      {
+        headers: this.header,
+        observe: 'response',
+      }
+    )
+  }
+
+  generateLR(genLrFormData): Observable<HttpResponse<LR>> {
     return this.http.post<LR>(
       this.generateLrUrl,
-      lr,
+      genLrFormData,
       {
       headers: this.header,
       observe: 'response',
