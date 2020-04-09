@@ -26,22 +26,22 @@ export class LrGenerateComponent implements OnInit {
     this.lrService.getLrNo()
       .subscribe(res => {
         this.lrNoOptions = res.body;
-      })
-    
+      });
+
     this.addItem();
   }
-  
+
   @ViewChild('consignorFinal', { static: true }) consignorFinal: ElementRef;
   @ViewChild('consigneeFinal', { static: true }) consigneeFinal: ElementRef;
 
   @ViewChild(FormGroupDirective, { static: true }) LrGenFormDir;
 
-  lrNoOptions: LR[] = []
-  clientAddressOptions: ClientAddress[] = []
+  lrNoOptions: LR[] = [];
+  clientAddressOptions: ClientAddress[] = [];
   client: string;
   consignorAddress: string;
   consigneeAddress: string;
-  
+
   lrGenForm = new FormGroup({
     lr_no_id: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required),
@@ -70,25 +70,22 @@ export class LrGenerateComponent implements OnInit {
     comment: new FormControl(''),
     size: new FormControl(''),
     weight: new FormControl(''),
-  })
+  });
 
   lrNoSelected(event?, lr?) {
     if (event && !lr) {
-      console.log("1")
       // Get LR Object using the lr_no received in event
       lr = this.lrNoOptions.find(i => i.lr_no === event.value);
     }
     if (!event && !lr) {
-      return error("lrNoSelected requires either event or lr argument.")
+      return error('lrNoSelected requires either event or lr argument.');
     }
-    console.log(lr)
     // Get vehicle_no and client_id from lr object
     const vehicle_no = lr.vehicle_no;
     const client_id = lr.client_id;
-    console.log(client_id, ' | ', vehicle_no);
     // Set the value of vehicle_no formcontrol
     this.vehicle_no.setValue(vehicle_no);
-    // Get client address for the client to whome the 
+    // Get client address for the client to whome the
     // selected lr is engaged to
     this.clientService.getClientAddressByClientId(client_id)
       .subscribe(res => {
@@ -101,12 +98,11 @@ export class LrGenerateComponent implements OnInit {
   consignorSelected(event) {
     if (event.value === undefined) {
       this.consignorFinal.nativeElement['value'] = this.consignor_manual.value;
-    }
-    else {
+    } else {
       const consignorAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consignorAddress = consignorAddressObj.address;
-      this.consignorFinal.nativeElement['value'] = this.client + '. ' + 
+      this.consignorFinal.nativeElement['value'] = this.client + '. ' +
         this.consignorAddress + '\n' + this.consignor_manual.value;
       this.consignor_gstin.setValue(consignorAddressObj.gstin);
     }
@@ -115,23 +111,20 @@ export class LrGenerateComponent implements OnInit {
   consigneeSelected(event) {
     if (event.value === undefined) {
       this.consigneeFinal.nativeElement['value'] = this.consignee_manual.value;
-    }
-    else {
+    } else {
       const consigneeAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consigneeAddress = consigneeAddressObj.address;
-      this.consigneeFinal.nativeElement['value'] = this.client + '. ' + 
+      this.consigneeFinal.nativeElement['value'] = this.client + '. ' +
         this.consigneeAddress + '\n' + this.consignee_manual.value;
       this.consignee_gstin.setValue(consigneeAddressObj.gstin);
     }
   }
 
   consignorManualChanged(event) {
-    console.log(event);
     if (event.data === undefined) {
       this.consignorFinal.nativeElement['value'] = this.consignor_manual.value;
-    }
-    else {
+    } else {
       this.consignorFinal.nativeElement['value'] = this.client + '. ' +
         this.consignorAddress + '\n' + this.consignor_manual.value;
     }
@@ -139,9 +132,8 @@ export class LrGenerateComponent implements OnInit {
 
   consigneeManualChanged(event) {
     if (event.data === undefined) {
-      this.consigneeFinal.nativeElement['value'] = this.consignee_manual.value;  
-    }
-    else {
+      this.consigneeFinal.nativeElement['value'] = this.consignee_manual.value;
+    } else {
       this.consigneeFinal.nativeElement['value'] = this.client + '. ' +
         this.consigneeAddress + '\n' + this.consignee_manual.value;
     }
@@ -169,7 +161,7 @@ export class LrGenerateComponent implements OnInit {
       .subscribe(res => {
         this.toastrShow('success', false, 'bell', '3000', 'top-right');
         this.clearForm();
-      })
+      });
   }
 
   clearForm() {
@@ -190,13 +182,11 @@ export class LrGenerateComponent implements OnInit {
     );
     modal.componentInstance.modalRef = modal;
     modal.result
-      .then(res => 
-        {
-          console.log(res);
+      .then(res => {
           this.lrNoSelected(null, res.body);
           this.lr_no_id.setValue(res.body['lr_no']);
           this.lrNoOptions.push(res.body);
-          }
+        },
       )
       .catch(rejection => {});
   }

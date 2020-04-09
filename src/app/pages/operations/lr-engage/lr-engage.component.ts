@@ -1,7 +1,7 @@
-import { NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClientService } from './../../../common/services/masters/client.service';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LrService } from '../../../common/services/operations/lr.service';
 import { Client } from '../../../common/interfaces/client';
 import { lrUniqueCheck } from '../../../common/validators/lr.validators';
@@ -81,7 +81,7 @@ export class LrEngageComponent implements OnInit {
         this.clearForm();
         if (this.modalRef) {
           this.modalRef.close(response);
-        };
+        }
       });
   }
 

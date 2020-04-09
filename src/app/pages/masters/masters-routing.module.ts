@@ -1,3 +1,4 @@
+import { CompanyHeaderComponent } from './company-header/company-header.component';
 import { AuthGuardService } from '../../common/services/auth/auth-guard/auth-guard.service';
 import { VehicleTypeReportComponent } from './vehicle-type-report/vehicle-type-report.component';
 import { VehicleBodyReportComponent } from './vehicle-body-report/vehicle-body-report.component';
@@ -28,6 +29,14 @@ const routes: Routes = [{
     component: VehicleTypeComponent,
   }],
   }, {
+  path: '',
+  component: CompanyHeaderComponent,
+  children: [{
+    path: 'header',
+    canActivate: [AuthGuardService],
+    component: CompanyHeaderComponent,
+  }],
+  }, {
     path: '',
     component: TransporterComponent,
     children: [{
@@ -54,4 +63,5 @@ export const routedComponents = [
   TransporterViewComponent,
   VehicleBodyReportComponent,
   VehicleTypeReportComponent,
+  CompanyHeaderComponent,
 ];

@@ -17,7 +17,7 @@ export class ClientService {
   private header;
   private url = environment.baseUrl + '/masters/client/';
   private clientAddressUrl = environment.baseUrl + '/masters/client_adr/';
-  private clientAddressByClientIdUrl = environment.baseUrl + 
+  private clientAddressByClientIdUrl = environment.baseUrl +
     '/masters/client_adr_by_client_id/';
 
   getClientList(): Observable<HttpResponse<Client[]>> {
@@ -34,8 +34,8 @@ export class ClientService {
       {
         headers: this.header,
         observe: 'response',
-      }
-    )
+      },
+    );
   }
 
   getClientAddressByClientId(client_id): Observable<HttpResponse<ClientAddress[]>> {
@@ -47,8 +47,8 @@ export class ClientService {
         },
         headers: this.header,
         observe: 'response',
-      }
-    )
+      },
+    );
   }
 
 }

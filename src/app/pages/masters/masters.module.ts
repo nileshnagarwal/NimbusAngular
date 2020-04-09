@@ -11,6 +11,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { VehicleBodyService } from './../../common/services/masters/vehicle-body.service';
 import { MaterialDesignModule } from '../../common/modules/material-design/material-design.module';
 import { NbCardModule } from '@nebular/theme';
+import { CompanyHeaderComponent } from './company-header/company-header.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { NbCardModule } from '@nebular/theme';
   declarations: [
     ...routedComponents,
     VehicleBodyComponent,
+    CompanyHeaderComponent,
   ],
   providers: [
     VehicleBodyService,
@@ -39,6 +41,7 @@ import { NbCardModule } from '@nebular/theme';
     FormsModule,
     ReactiveFormsModule,
     NbCardModule,
+    CompanyHeaderComponent,
   ],
 })
 

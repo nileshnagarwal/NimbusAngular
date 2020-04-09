@@ -1,3 +1,4 @@
+import { LrViewComponent } from './lr-view/lr-view.component';
 import { LrGenerateComponent } from './lr-generate/lr-generate.component';
 import { LrEngageComponent } from './lr-engage/lr-engage.component';
 import { AuthGuardService } from '../../common/services/auth/auth-guard/auth-guard.service';
@@ -23,9 +24,18 @@ const routes: Routes = [
       canActivate: [AuthGuardService],
       component: LrGenerateComponent,
       }],
-  }
+  },
+  {
+    path: '',
+    component: LrViewComponent,
+    children: [{
+      path: 'view-lr',
+      canActivate: [AuthGuardService],
+      component: LrViewComponent,
+      }],
+  },
 ];
-  
+
 
 
 

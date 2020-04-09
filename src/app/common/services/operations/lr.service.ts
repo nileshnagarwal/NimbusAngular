@@ -19,7 +19,7 @@ export class LrService {
   private header;
   private url = environment.baseUrl + '/operations/';
   private engageLrUrl = this.url + 'lr_no/';
-  private generateLrUrl = this.url + 'lr/'
+  private generateLrUrl = this.url + 'lr/';
   private lrUniqueCheckUrl = this.url + 'lr_unique_check/';
 
   engageLR(lr: LR): Observable<HttpResponse<LR>> {
@@ -39,8 +39,8 @@ export class LrService {
       {
         headers: this.header,
         observe: 'response',
-      }
-    )
+      },
+    );
   }
 
   generateLR(genLrFormData): Observable<HttpResponse<LR>> {
@@ -64,6 +64,16 @@ export class LrService {
           observe: 'response',
         },
       );
+  }
+
+  viewLr(lr_no: number): Observable<HttpResponse<LR>> {
+    return this.http.get<LR>(
+      this.engageLrUrl + '/' + lr_no,
+      {
+        headers: this.header,
+        observe: 'response',
+      },
+    );
   }
 
 }

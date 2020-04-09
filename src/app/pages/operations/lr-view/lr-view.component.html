@@ -1,0 +1,185 @@
+<nb-card>
+  <nb-card-header>
+    Engage LR
+  </nb-card-header>
+
+  <nb-card-body id="print-section">
+    <body>
+      <ngx-company-header></ngx-company-header>
+      <div class="document-area">
+        <div class="title">
+          CONSIGNMENT NOTE
+        </div>
+        <div class="consignment-note">
+          <div class="consignment-details">
+            <div class="address">
+              <div class="consignor-details">
+                <span class="h2-card">
+                  Consignor Details:
+                </span>
+                <span class="h3-card">
+                  <p>
+                    Paresh Constructions & Foundations Pvt Ltd <br>
+                    CS-253, Gr. Floor, Valikar Chawl, <br>
+                    Dahisar Mori Road, Dahisar Mori,<br>
+                    Thane, Maharashtra 421204
+                  </p>
+                </span>
+              </div>
+              <div class="consignee-details">
+                <span class="h2-card">Consignee Details</span>
+                <span class="h3-card">
+                  <p>
+                    Indian Warehousing Corp <br>
+                    CS-253, Gr. Floor, Valikar Chawl, <br>
+                    Dahisar Mori Road, Dahisar Mori,<br>
+                    Thane, Maharashtra 421204
+                  </p>
+                </span>          
+              </div>
+            </div>
+            <div class="document-details">
+              <div class="dd-row">
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Consignment Note No:
+                  </span><br>
+                  Nimbus/701
+                </div>
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Date:
+                  </span><br>
+                  06-04-2020
+                </div>
+              </div>
+              <div class="dd-row">
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Vehicle No:
+                  </span><br>
+                  MH 04 EY 4991
+                </div>
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Size and Weight:
+                  </span><br>
+                  14 x 14 x 14 - 20 Tons
+                </div>          
+              </div>
+              <div class="dd-row">
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Invoice Details:
+                  </span><br>
+                  TEPL/19-20/020/123<br>
+                  Dated 03-04-2020
+                </div>
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Delivery Challan Details:
+                  </span><br>
+                  DC/TELP/19-20/0030<br>
+                  Dated 03-04-2020
+                </div>          
+              </div>
+              <div class="dd-row">
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Ewaybill No:
+                  </span><br>
+                  9845 7898 4887
+                </div>
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Verification No: <br>
+                  </span>
+                  AC5V79
+                </div>
+              </div>
+              <div class="dd-row">
+                <div class="light-1100-border">
+                  <span>
+                    Unloading by Party
+                  </span><br>
+                  Owner's Risk <br>
+                  To be Billed at Mumbai
+                </div>
+                <div class="light-1100-border">
+                  <span class="h2-card">
+                    Comments:
+                  </span><br>       
+                  <span>
+                    Not for Sale Material
+                  </span>
+                </div>
+              </div>        
+            </div>
+          </div>
+          <div class="items">
+            <div class="heading light-0111-border">
+              <span class="h1-card">Description of Goods</span>
+            </div>
+            <div class="item-details">
+              <div class="item-columns">
+                <div class="light-0101-border">#10</div>
+                <div class="light-0100-border">
+                  Loose Packing 1 No
+                </div>
+                <div class="light-0100-border">Metal Boiler Tank</div>
+              </div>
+              <div class="item-columns">
+                <div class="light-0101-border">#11</div>
+                <div class="light-0100-border">
+                  Wooden Box Packing 1 No
+                </div>
+                <div class="light-0100-border">Metal Crates</div>
+              </div>
+            </div>      
+          </div>
+          <div class="other-details">
+            <div class="value-row">
+              <div class="light-1001-border">
+                Value: As per Invoice
+              </div>
+              <div class="light-1101-border">
+                E. & O.E.
+              </div>
+            </div>
+            <div class="signature-row">
+              <div class="receiving pad5 light-1001-border">
+                Received in Good Condition:<br><br><br>
+              </div>
+              <div class="nimbus-sign pad5 light-1101-border">
+                Authorised Signature <br><br><br>
+                for Nimbus Logistics
+              </div>
+            </div>
+            <div class="thane-jur pad5 light-1101-border">
+              SUBJECT TO THANE JURISDICTION
+            </div>
+            <div class="verify-link pad5 light-border">
+              This is a computer generated document. <br>
+              You can visit www.nimbuslogisitcs.in/verify_lr/ to verify the authenticity of the document.
+            </div>
+          </div>    
+        </div>
+      </div>
+    </body>
+  </nb-card-body>
+  
+</nb-card>
+
+<!-- Adding the print button -->
+<div class="form-group row">
+  <div class="col-md-12 col-lg-6" align="right">
+    <button 
+      mat-raised-button color="primary"
+      printSectionId="print-section"
+      [useExistingCss]="true"
+      
+      ngxPrint>
+      PRINT
+    </button>
+  </div>
+</div>

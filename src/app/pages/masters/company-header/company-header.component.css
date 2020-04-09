@@ -1,0 +1,20 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+  
+.co-address {
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+  margin-right: 5px;
+  margin-top: 0.8cm;
+  border-color: #4a76a6;
+  padding-top: 2mm;
+}
+
+img {
+  max-width: 100%;
+  padding-left: 5mm;
+}
+
+  
