@@ -102,7 +102,7 @@ export class LrGenerateComponent implements OnInit {
       const consignorAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consignorAddress = consignorAddressObj.address;
-      this.consignorFinal.nativeElement['value'] = this.client + '. ' +
+      this.consignorFinal.nativeElement['value'] = this.client + '.\n' +
         this.consignorAddress + '\n' + this.consignor_manual.value;
       this.consignor_gstin.setValue(consignorAddressObj.gstin);
     }
@@ -115,26 +115,26 @@ export class LrGenerateComponent implements OnInit {
       const consigneeAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consigneeAddress = consigneeAddressObj.address;
-      this.consigneeFinal.nativeElement['value'] = this.client + '. ' +
+      this.consigneeFinal.nativeElement['value'] = this.client + '.\n' +
         this.consigneeAddress + '\n' + this.consignee_manual.value;
       this.consignee_gstin.setValue(consigneeAddressObj.gstin);
     }
   }
 
   consignorManualChanged(event) {
-    if (event.data === undefined) {
+    if (!this.consignor_id.value) {
       this.consignorFinal.nativeElement['value'] = this.consignor_manual.value;
     } else {
-      this.consignorFinal.nativeElement['value'] = this.client + '. ' +
+      this.consignorFinal.nativeElement['value'] = this.client + '.\n' +
         this.consignorAddress + '\n' + this.consignor_manual.value;
     }
   }
 
   consigneeManualChanged(event) {
-    if (event.data === undefined) {
+    if (!this.consignee_id.value) {
       this.consigneeFinal.nativeElement['value'] = this.consignee_manual.value;
     } else {
-      this.consigneeFinal.nativeElement['value'] = this.client + '. ' +
+      this.consigneeFinal.nativeElement['value'] = this.client + '.\n' +
         this.consigneeAddress + '\n' + this.consignee_manual.value;
     }
   }
