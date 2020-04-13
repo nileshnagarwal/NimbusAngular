@@ -1,3 +1,4 @@
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MaterialDesignModule } from './../../common/modules/material-design/material-design.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThemeModule } from './../../@theme/theme.module';
@@ -6,16 +7,13 @@ import { routedComponents, OperationsRoutingModule } from './operations-routing.
 import { NbCardModule } from '@nebular/theme';
 import { LrEngageComponent } from './lr-engage/lr-engage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LrViewComponent } from './lr-view/lr-view.component';
 import { MastersModule } from './../masters/masters.module';
 import { CompanyHeaderComponent } from '../masters/company-header/company-header.component';
-import {NgxPrintModule} from 'ngx-print';
-import { LrReportComponent } from './lr-report/lr-report.component';
-
-
+import { NgxPrintModule } from 'ngx-print';
+import { LrViewComponent } from './lr-view/lr-view.component';
 
 @NgModule({
-  declarations: [...routedComponents, LrViewComponent, LrReportComponent],
+  declarations: [...routedComponents],
   imports: [
     ThemeModule,
     OperationsRoutingModule,
@@ -25,10 +23,12 @@ import { LrReportComponent } from './lr-report/lr-report.component';
     NgbModule,
     MastersModule,
     NgxPrintModule,
+    Ng2SmartTableModule,
   ],
   entryComponents: [
     LrEngageComponent,
     CompanyHeaderComponent,
+    LrViewComponent,
   ],
 })
 export class OperationsModule { }

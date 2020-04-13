@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header>
-    Engage LR
+    LR No {{ lr.lr_no_id }}
   </nb-card-header>
 
   <nb-card-body id="print-section">
@@ -14,26 +14,18 @@
           <div class="consignment-details">
             <div class="address">
               <div class="consignor-details">
-                <span class="h2-card">
-                  Consignor Details:
-                </span>
+                <span class="h2-card">Consignor Details:</span>
                 <span class="h3-card">
-                  <p>
-                    Paresh Constructions & Foundations Pvt Ltd <br>
-                    CS-253, Gr. Floor, Valikar Chawl, <br>
-                    Dahisar Mori Road, Dahisar Mori,<br>
-                    Thane, Maharashtra 421204
+                  <p>{{ consignor }}
+                    <span *ngIf="lr.consignor_gstin"><br>GSTIN: {{ lr.consignor_gstin }}</span>                    
                   </p>
                 </span>
               </div>
               <div class="consignee-details">
                 <span class="h2-card">Consignee Details</span>
                 <span class="h3-card">
-                  <p>
-                    Indian Warehousing Corp <br>
-                    CS-253, Gr. Floor, Valikar Chawl, <br>
-                    Dahisar Mori Road, Dahisar Mori,<br>
-                    Thane, Maharashtra 421204
+                  <p>{{ consignee }}
+                    <span *ngIf="lr.consignee_gstin"><br>GSTIN: {{ lr.consignee_gstin }}</span>                    
                   </p>
                 </span>          
               </div>
@@ -44,13 +36,13 @@
                   <span class="h2-card">
                     Consignment Note No:
                   </span><br>
-                  Nimbus/701
+                  Nimbus/{{ lr.lr_no_id }}
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
                     Date:
                   </span><br>
-                  06-04-2020
+                  {{lr.date | date:'LLL dd, yyyy'}}
                 </div>
               </div>
               <div class="dd-row">
@@ -58,43 +50,44 @@
                   <span class="h2-card">
                     Vehicle No:
                   </span><br>
-                  MH 04 EY 4991
+                  {{ lr.vehicle_no }}
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
-                    Size and Weight:
+                    Invoice No:
                   </span><br>
-                  14 x 14 x 14 - 20 Tons
-                </div>          
+                  {{ lr.invoice_no }}<br>
+                  <span *ngIf="lr.invoice_date">Dated {{ lr.invoice_date }}</span>
+                </div>
               </div>
               <div class="dd-row">
                 <div class="light-1100-border">
                   <span class="h2-card">
-                    Invoice Details:
+                    Delivery Challan No:
                   </span><br>
-                  TEPL/19-20/020/123<br>
-                  Dated 03-04-2020
+                  {{ lr.dc_no }}<br>
+                  <span *ngIf="lr.dc_date">Dated {{ lr.dc_date }}</span>                  
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
-                    Delivery Challan Details:
+                    Bill of Entry No:
                   </span><br>
-                  DC/TELP/19-20/0030<br>
-                  Dated 03-04-2020
-                </div>          
+                  {{ lr.boe_no }}<br>
+                  <span *ngIf="lr.boe_date">Dated {{ lr.boe_date }}</span>
+                </div>
               </div>
               <div class="dd-row">
                 <div class="light-1100-border">
                   <span class="h2-card">
                     Ewaybill No:
                   </span><br>
-                  9845 7898 4887
+                  <span *ngIf="lr.ewaybill_no">{{ lr.ewaybill_no }}</span>
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
                     Verification No: <br>
                   </span>
-                  AC5V79
+                  {{ lr.lr_obj.verification_no }}
                 </div>
               </div>
               <div class="dd-row">
@@ -108,39 +101,49 @@
                 <div class="light-1100-border">
                   <span class="h2-card">
                     Comments:
-                  </span><br>       
+                  </span><br>
                   <span>
-                    Not for Sale Material
+                    {{ lr.comments }}
                   </span>
                 </div>
               </div>        
             </div>
           </div>
-          <div class="items">
-            <div class="heading light-0111-border">
-              <span class="h1-card">Description of Goods</span>
+          <div class="items-section">
+            <div>
+              <div class="heading light-0111-border">
+                <span class="h1-card">Description of Goods</span>
+              </div>
             </div>
-            <div class="item-details">
-              <div class="item-columns">
-                <div class="light-0101-border">#10</div>
-                <div class="light-0100-border">
-                  Loose Packing 1 No
+            <div class="item-columns">
+              <div class="light-0101-border col">
+                <div class="light-0010-border">Sr No</div>
+                <div class="pad5"
+                  *ngFor="let item of lr.items; let i = index">{{i+1}}.
                 </div>
-                <div class="light-0100-border">Metal Boiler Tank</div>
               </div>
-              <div class="item-columns">
-                <div class="light-0101-border">#11</div>
-                <div class="light-0100-border">
-                  Wooden Box Packing 1 No
+              <div class="light-0100-border col">
+                <div class="light-0010-border">Packing Type - No of Pkgs</div>
+                <div class="pad5"
+                  *ngFor="let item of lr.items; let i = index">
+                  {{item.packing_type}}
+                  <span *ngIf="item.packing_type && item.no_of_pkg"> - </span>
+                  <span *ngIf="item.no_of_pkg">{{ item.no_of_pkg }}</span>
                 </div>
-                <div class="light-0100-border">Metal Crates</div>
               </div>
-            </div>      
+              <div class="light-0100-border col">
+                <div class="light-0010-border">Description</div>
+                <div class="pad5"
+                  *ngFor="let item of lr.items; let i = index">
+                  {{ item.description }}
+                </div>
+              </div>
+            </div>
           </div>
           <div class="other-details">
             <div class="value-row">
               <div class="light-1001-border">
-                Value: As per Invoice
+                Value: {{ lr.value }}
               </div>
               <div class="light-1101-border">
                 E. & O.E.

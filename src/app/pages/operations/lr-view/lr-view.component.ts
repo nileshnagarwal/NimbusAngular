@@ -12,13 +12,26 @@ export class LrViewComponent implements OnInit {
   constructor(private lrService: LrService) { }
 
   ngOnInit() {
-    this.lrService.viewLr(this.lrNo)
-      .subscribe(res => {
-        this.lr = res.body;
-      });
+    if (this.lr['consignor_obj']) {
+      this.consignor =  this.lr['consignor_obj']['client']['client'] + '\n' +
+      this.lr['consignor_obj']['address'] + '\n' +
+      this.lr.consignor_manual;
+    } else {
+      this.consignor = this.lr.consignor_manual;
+    }
+    if (this.lr['consignee_obj']) {
+      this.consignee =  this.lr['consignee_obj']['client']['client'] + '\n' +
+      this.lr['consignee_obj']['address'] + '\n' +
+      this.lr.consignee_manual;
+    } else {
+      this.consignee = this.lr.consignee_manual;
+    }
   }
 
   @Input() lrNo: number;
-  lr: LR;
+  @Input() lr: LR;
+
+  consignor: string;
+  consignee: string;
 
 }

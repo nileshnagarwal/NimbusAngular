@@ -66,9 +66,19 @@ export class LrService {
       );
   }
 
-  viewLr(lr_no: number): Observable<HttpResponse<LR>> {
-    return this.http.get<LR>(
-      this.engageLrUrl + '/' + lr_no,
+  viewLr(lrNo): Observable<HttpResponse<LR>>  {
+    return this.http
+      .get<LR>(this.generateLrUrl + lrNo + '/',
+        {
+          observe: 'response',
+          headers: this.header,
+        },
+      );
+  }  
+
+  lrList(): Observable<HttpResponse<LR[]>> {
+    return this.http.get<LR[]>(
+      this.generateLrUrl,
       {
         headers: this.header,
         observe: 'response',

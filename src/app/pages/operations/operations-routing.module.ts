@@ -1,3 +1,4 @@
+import { LrReportComponent } from './lr-report/lr-report.component';
 import { LrViewComponent } from './lr-view/lr-view.component';
 import { LrGenerateComponent } from './lr-generate/lr-generate.component';
 import { LrEngageComponent } from './lr-engage/lr-engage.component';
@@ -27,13 +28,13 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LrViewComponent,
+    component: LrReportComponent,
     children: [{
-      path: 'view-lr',
+      path: 'lr-report',
       canActivate: [AuthGuardService],
-      component: LrViewComponent,
+      component: LrReportComponent,
       }],
-  },
+  },  
 ];
 
 
@@ -49,4 +50,6 @@ export const routedComponents = [
     OperationsComponent,
     LrEngageComponent,
     LrGenerateComponent,
+    LrReportComponent,
+    LrViewComponent,
 ];
