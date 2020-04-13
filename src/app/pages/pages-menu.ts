@@ -32,8 +32,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/operations/generate-lr',
       },
       {
-        title: 'LR View',
-        link: '/pages/operations/view-lr',
+        title: 'LR List',
+        link: '/pages/operations/lr-report',
       },
     ],
   },
@@ -52,10 +52,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Transporter',
         link: '/pages/masters/transporter',
-      },
-      {
-        title: 'Header',
-        link: '/pages/masters/header',
       },
     ],
   },

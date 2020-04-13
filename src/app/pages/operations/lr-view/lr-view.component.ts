@@ -1,4 +1,3 @@
-import { LrService } from './../../../common/services/operations/lr.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { LR } from '../../../common/interfaces/lr';
 
@@ -9,7 +8,7 @@ import { LR } from '../../../common/interfaces/lr';
 })
 export class LrViewComponent implements OnInit {
 
-  constructor(private lrService: LrService) { }
+  constructor() { }
 
   ngOnInit() {
     if (this.lr['consignor_obj']) {

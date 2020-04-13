@@ -13,12 +13,12 @@ import { DatePipe } from '@angular/common';
 export class LrReportComponent implements OnInit {
 
   constructor(
-    private LrService: LrService,
+    private lrService: LrService,
     private datePipe: DatePipe,
     private modalService: NgbModal) {}
 
   ngOnInit() {
-    this.LrService.lrList()
+    this.lrService.lrList()
       .subscribe(response => {
         this.source.load(response.body);
       });
@@ -48,13 +48,13 @@ export class LrReportComponent implements OnInit {
       date: {
         title: 'LR Date',
         type: 'date',
-        valuePrepareFunction: (date) => { 
-          var raw = new Date(date);
-  
-          var formatted = this.datePipe.transform(raw, 'dd MMM yyyy');
+        valuePrepareFunction: (date) => {
+          const raw = new Date(date);
+
+          const formatted = this.datePipe.transform(raw, 'dd MMM yyyy');
           return formatted;
-        }
-      },      
+        },
+      },
       vehicle_no: {
         title: 'Vehicle No',
         type: 'string',
@@ -78,7 +78,6 @@ export class LrReportComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   viewLr(event) {
-    console.log(event);
     const modal = this.modalService.open(
       LrViewComponent,
       { size: 'lg', container: 'nb-layout' },

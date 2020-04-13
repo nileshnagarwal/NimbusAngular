@@ -74,7 +74,7 @@ export class LrService {
           headers: this.header,
         },
       );
-  }  
+  }
 
   lrList(): Observable<HttpResponse<LR[]>> {
     return this.http.get<LR[]>(

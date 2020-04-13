@@ -29,14 +29,6 @@ const routes: Routes = [{
     component: VehicleTypeComponent,
   }],
   }, {
-  path: '',
-  component: CompanyHeaderComponent,
-  children: [{
-    path: 'header',
-    canActivate: [AuthGuardService],
-    component: CompanyHeaderComponent,
-  }],
-  }, {
     path: '',
     component: TransporterComponent,
     children: [{
