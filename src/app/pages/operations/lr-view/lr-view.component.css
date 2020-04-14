@@ -1,5 +1,4 @@
 body {
-  // width: 21cm;
   height: 39cm;
   padding: 1cm 1cm 1cm 1.5cm;
   display: grid;
@@ -223,4 +222,8 @@ body {
 
 .verify-link {
   text-align: center;
+}
+
+img {
+  max-width: 8em;
 }

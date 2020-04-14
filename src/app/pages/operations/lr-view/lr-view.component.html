@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header>
-    LR No {{ lr.lr_no_id }}
+    LR No {{ lr['lr_no_id'] }}
   </nb-card-header>
 
   <nb-card-body id="print-section">
@@ -36,7 +36,7 @@
                   <span class="h2-card">
                     Consignment Note No:
                   </span><br>
-                  Nimbus/{{ lr.lr_no_id }}
+                  Nimbus/{{ lr['lr_no_id'] }}
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
@@ -87,7 +87,7 @@
                   <span class="h2-card">
                     Verification No: <br>
                   </span>
-                  {{ lr.lr_obj.verification_no }}
+                  {{ lr['lr_obj']['verification_no'] }}
                 </div>
               </div>
               <div class="dd-row">
@@ -103,7 +103,7 @@
                     Comments:
                   </span><br>
                   <span>
-                    {{ lr.comments }}
+                    {{ lr.comment }}
                   </span>
                 </div>
               </div>        
@@ -154,8 +154,9 @@
                 Received in Good Condition:<br><br><br>
               </div>
               <div class="nimbus-sign pad5 light-1101-border">
-                Authorised Signature <br><br><br>
-                for Nimbus Logistics
+                Authorised Signature<br>
+                <img src="assets/images/signature.png">
+                <br>for Nimbus Logistics
               </div>
             </div>
             <div class="thane-jur pad5 light-1101-border">
@@ -180,7 +181,7 @@
       mat-raised-button color="primary"
       printSectionId="print-section"
       [useExistingCss]="true"
-      
+      printTitle={{printTitle}}
       ngxPrint>
       PRINT
     </button>
