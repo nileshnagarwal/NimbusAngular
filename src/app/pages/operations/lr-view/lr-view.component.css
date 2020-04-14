@@ -224,3 +224,7 @@ body {
 .verify-link {
   text-align: center;
 }
+
+img {
+  max-width: 8em;
+}

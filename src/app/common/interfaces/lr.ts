@@ -10,6 +10,8 @@ export interface LR {
     consignee_id?: number;
     consignor_manual?: string;
     consignee_manual?: string;
+    consignor_gstin?: string;
+    consignee_gstin?: string;
     invoice_no?: string;
     invoice_date?: string;
     dc_no?: string;
@@ -21,4 +23,5 @@ export interface LR {
     comment?: string;
     size?: string;
     weight?: string;
+    items?: object;
 }
