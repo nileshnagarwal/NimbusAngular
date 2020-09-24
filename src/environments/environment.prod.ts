@@ -5,7 +5,7 @@
  */
 export const environment = {
   production: true,
-  baseUrl: 'https://www.nimbustech.space/',
+  baseUrl: 'https://nimbusdjango.herokuapp.com',
   firebase: {
     apiKey: 'AIzaSyD5Le64Z7rhYm-ta2wgYswYq8G7wEoUNqE',
     authDomain: 'tpfirebase-ca57d.firebaseapp.com',
