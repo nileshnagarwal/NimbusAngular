@@ -116,13 +116,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // For checking if already subscribed and controlling visibility of
   // push notification icon in header
-  isSubscribed() {
-    if (Notification.permission !== 'granted') {
-      return of(false);
-    } else {
-      return of(true);
-    }
-  }
+  // isSubscribed() {
+  //   if (Notification.permission !== 'granted') {
+  //     return of(false);
+  //   } else {
+  //     return of(true);
+  //   }
+  // }
 
   ngOnDestroy() {
     this.destroy$.next();

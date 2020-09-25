@@ -23,11 +23,12 @@
     <!-- <nb-action class="control-item" icon="bell-outline"></nb-action> -->
     <!-- Adding the subscribe button -->
     <nb-action class="control-item" 
-      (click)="subscribeNotifications()" 
-      *ngIf="!(isSubscribed() | async)"
+      (click)="subscribeNotifications()"       
       nbTooltip="Subscribe to Push Notifications"
       nbTooltipStatus="info"
       icon="bell-outline">
+      <!-- Add this ngIf to above nb-action to hide when subscribed
+      *ngIf="!(isSubscribed() | async)" -->
     </nb-action>
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
       <nb-user [nbContextMenu]="userMenu"

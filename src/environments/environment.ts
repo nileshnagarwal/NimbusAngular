@@ -12,12 +12,13 @@ export const environment = {
   production: false,
   baseUrl: 'http://127.0.0.1:8000',
   firebase: {
-    apiKey: 'AIzaSyD5Le64Z7rhYm-ta2wgYswYq8G7wEoUNqE',
-    authDomain: 'tpfirebase-ca57d.firebaseapp.com',
-    databaseURL: 'https://tpfirebase-ca57d.firebaseio.com',
-    projectId: 'tpfirebase-ca57d',
-    storageBucket: 'tpfirebase-ca57d.appspot.com',
-    messagingSenderId: '914218933009',
-    appId: '1:914218933009:web:decadc48dde53b4d',
+    apiKey: "AIzaSyB7NGkd5NEMNXCLgRNNbNs8hl-A-mYfvzo",
+    authDomain: "nimbusapp-fbase-msg.firebaseapp.com",
+    databaseURL: "https://nimbusapp-fbase-msg.firebaseio.com",
+    projectId: "nimbusapp-fbase-msg",
+    storageBucket: "nimbusapp-fbase-msg.appspot.com",
+    messagingSenderId: "577996256183",
+    appId: "1:577996256183:web:bb3e2694064076a2736e32",
+    measurementId: "G-CBP5PDNZDR"
   },
 };
