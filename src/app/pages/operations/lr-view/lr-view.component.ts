@@ -23,8 +23,8 @@ export class LrViewComponent implements OnInit {
     if (this.lr['consignee_obj']) {
       this.consignee =  this.lr['consignee_obj']['client']['client'] + '\n' +
       this.lr['consignee_obj']['address'];
-      if (this.lr.consignor_manual) {
-        this.consignor = this.consignor + '\n' + this.lr.consignee_manual;
+      if (this.lr.consignee_manual) {
+        this.consignee = this.consignee + '\n' + this.lr.consignee_manual;
       }
     } else {
       this.consignee = this.lr.consignee_manual;

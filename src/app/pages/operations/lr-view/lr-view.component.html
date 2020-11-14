@@ -14,20 +14,12 @@
           <div class="consignment-details">
             <div class="address">
               <div class="consignor-details">
-                <span class="h2-card">Consignor Details:</span>
-                <span class="h3-card">
-                  <p>{{ consignor }}
-                    <span *ngIf="lr.consignor_gstin"><br>GSTIN: {{ lr.consignor_gstin }}</span>                    
-                  </p>
-                </span>
+                <span class="h2-card">Consignor Details:</span><br>
+                <span class="h3-card">{{ consignor }}<span *ngIf="lr.consignor_gstin"><br>GSTIN: {{ lr.consignor_gstin }}</span></span>
               </div>
               <div class="consignee-details">
-                <span class="h2-card">Consignee Details</span>
-                <span class="h3-card">
-                  <p>{{ consignee }}
-                    <span *ngIf="lr.consignee_gstin"><br>GSTIN: {{ lr.consignee_gstin }}</span>                    
-                  </p>
-                </span>          
+                <span class="h2-card">Consignee Details:</span><br>
+                <span class="h3-card">{{ consignee }}<span *ngIf="lr.consignee_gstin"><br>GSTIN: {{ lr.consignee_gstin }}</span></span>          
               </div>
             </div>
             <div class="document-details">
