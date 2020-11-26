@@ -8,7 +8,7 @@
       <ngx-company-header></ngx-company-header>
       <div class="document-area">
         <div class="title">
-          CONSIGNMENT NOTE
+          LORRY RECEIPT
         </div>
         <div class="consignment-note">
           <div class="consignment-details">
@@ -26,9 +26,9 @@
               <div class="dd-row">
                 <div class="light-1100-border">
                   <span class="h2-card">
-                    Consignment Note No:
+                    Lorry Receipt No:
                   </span><br>
-                  Nimbus/{{ lr['lr_no_id'] }}
+                  {{ lr['lr_no_id'] }}
                 </div>
                 <div class="light-1100-border">
                   <span class="h2-card">
@@ -143,7 +143,8 @@
             </div>
             <div class="signature-row">
               <div class="receiving pad5 light-1001-border">
-                Received in Good Condition:<br><br><br>
+                Received in Good Condition:<br><br><br><br>
+                Nimbus Logistics GSTIN: 27AJKPA4618F1ZG
               </div>
               <div class="nimbus-sign pad5 light-1101-border">
                 Authorised Signature<br>
@@ -156,7 +157,7 @@
             </div>
             <div class="verify-link pad5 light-border">
               This is a computer generated document. <br>
-              You can visit www.nimbuslogisitcs.in/verify_lr/ to verify the authenticity of the document.
+              You can visit https://nimbuslogistics.in/verify-lr/ to verify the authenticity of the document.
             </div>
           </div>    
         </div>
