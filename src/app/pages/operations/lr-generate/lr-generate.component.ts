@@ -25,7 +25,7 @@ export class LrGenerateComponent implements OnInit {
   ngOnInit() {
     this.lrService.getLrNo()
       .subscribe(res => {
-        this.lrNoOptions = res.body;
+        res.body ? this.lrNoOptions = res.body : null;
       });
 
     this.addItem();
