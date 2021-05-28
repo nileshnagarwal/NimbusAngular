@@ -1,0 +1,39 @@
+* {
+    font-family: Calibri, Open Sans, sans-serif;
+}
+
+.h2-card {
+    font-size: 1.2em;
+    color: #3ca5ea;
+    font-weight: 1000;
+}
+
+.h3-card {
+    font-size: 1em;
+    color: #3ca5ea;
+    font-weight: 700;
+}
+
+.h4-card {
+    font-size: 1em;
+    color: #565656;
+    font-weight: 540;
+}
+
+.section {
+    margin: 10px;
+}
+
+.section:nth-child(2) {
+    margin-top: 20px;
+}
+
+.section > div {
+    margin: 10px;
+}
+
+.list {
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 1.5em 1fr;
+}

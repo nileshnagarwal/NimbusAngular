@@ -1,3 +1,4 @@
+import { EnquiryViewComponent } from './enquiry-view/enquiry-view.component';
 import { QuotesReportComponent } from './quotes-report/quotes-report.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -36,6 +37,15 @@ const routes: Routes = [{
       path: 'quotes-report',
       canActivate: [AuthGuardService],
       component: QuotesReportComponent,
+    }],
+  },
+  {
+    path: '',
+    component: EnquiryViewComponent,
+    children: [{
+      path: 'enquiry-view',
+      canActivate: [AuthGuardService],
+      component: EnquiryViewComponent,
     }],
   },
   {

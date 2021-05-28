@@ -1,0 +1,121 @@
+<nb-card>
+    <nb-card-header>
+        <span>#{{ response?.enquiry_no }}</span> <br>
+        <span>{{ response?.load_type_str }} | {{ response?.loading_date | date:'dd LLL | EEE' }}</span>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="section">
+            <span class="h2-card">Consignment Details:</span>
+            <div>
+                <span class="h3-card">Size: </span>
+                <span class="h4-card">{{ response?.load_size | feetInches }} - {{ response?.weight | number:'.0-1' }} Tons</span>
+            </div>
+            <div>
+                <span class="h3-card">Dispatch From: </span><br>
+                <div *ngFor="let source of response?.places_source; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}. </div>
+                        <div class="h4-card">{{ source }}</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="h3-card">Ship To: </span><br>
+                <div *ngFor="let dest of response?.places_destination; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}. </div>
+                        <div class="h4-card">{{ dest }}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="response?.places_return.length>0">
+                <span class="h3-card">Return To: </span><br>
+                <div *ngFor="let return of response?.places_return; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}.</div>
+                        <div class="h4-card">{{return}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="response?.extra_expenses.length>0">
+                <span class="h3-card">Extra Expenses: </span><br>
+                <div *ngFor="let expense of response?.extra_expenses_str; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}. </div>
+                        <div class="h4-card">{{expense}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="section">
+            <span class="h2-card">Vehicle Details:</span>
+            <div>
+                <span class="h3-card">Vehicle Type Suitable: </span><br>
+                <div *ngFor="let vehicle_type of response?.vehicle_type_str; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}. </div>
+                        <div class="h4-card">{{vehicle_type}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="response?.vehicle_body_str.length>0">
+                <span class="h3-card">Vehicle Body Suitable: </span><br>
+                <div *ngFor="let vehicle_body of response?.vehicle_body_str; let i=index">
+                    <div class="list">
+                        <div class="h4-card">{{i+1}}. </div>
+                        <div class="h4-card">{{vehicle_body}}</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="h3-card">Comments: </span><br>
+                <div class="list">
+                    <div></div>
+                    <div class="h4-card">
+                        {{response?.comments}}
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="form-group row"></div>
+        <div class="form-group row">
+          <div class="offset-7 offset-sm-7 offset-md-7 offset-lg-7 col-4 col-sm-5" align="right">
+            <!-- Convert to Confirm Button -->
+            <!-- ((userType$ | async)?.user_id === 2; else false) && (response?.status === 'Floated Enquiry'; else false)" -->
+            <button 
+              *ngIf="displayConfirmButton() | async"            
+              mat-raised-button
+              type="button"
+              style='margin-right:16px'
+              (click)="openConfirmEnquiry()">
+              CONFIRM ORDER
+            </button>
+            <!-- Quote Button -->
+            <button 
+              id="quote"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              (click)="openQuote()"
+              ngbAutofocus>
+              QUOTE
+            </button>
+          </div>
+        </div>
+        
+        <br><br>
+        <mat-divider></mat-divider>
+        <br><br>
+        <ngx-quotes-report 
+          #report 
+          [enquiry_id]="enquiryId">
+        </ngx-quotes-report>
+        
+    </nb-card-body>
+</nb-card>
+
+<!-- <pre>
+    {{ response | json }}
+</pre> -->

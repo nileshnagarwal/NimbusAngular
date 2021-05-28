@@ -4,7 +4,7 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 // import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject, of } from 'rxjs';
+import { Subject } from 'rxjs';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { AuthService } from '../../../common/services/auth/auth-service/auth.service';
 import { MessagingService } from '../../../common/services/messaging.service';

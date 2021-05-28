@@ -3,6 +3,7 @@ import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { pageSize } from '../../../common/misc/api-constants';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EnquiriesViewComponent } from '../enquiries-view/enquiries-view.component';
+import { EnquiryViewComponent } from './../enquiry-view/enquiry-view.component';
 import { MiscService } from '../../../common/services/misc/misc.service';
 
 @Component({
@@ -103,7 +104,7 @@ export class EnquiryListComponent implements OnInit {
   // This function opens up a modal with the enquiry details filled in.
   viewEnquiry(enquiry) {
     const activeModal = this.modalService.open(
-      EnquiriesViewComponent,
+      EnquiryViewComponent,
       { size: 'lg', container: 'nb-layout' },
     );
     activeModal.componentInstance.enquiryId = enquiry['enquiry_id'];
