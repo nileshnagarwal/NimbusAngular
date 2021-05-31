@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+  }
+
+.h3-card {
+    font-size: 1.2em;
+    color: #3366ff;
+    font-weight: 700;
+}
+
+.h4-card {
+    font-size: 1em;
+    color: #565656;
+    font-weight: 540;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+  
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr min-content 1fr;
+  grid-template-areas: "heading-details"
+                        "rate-details"
+                        "seperator"
+                        "footer";
+}
+
+.heading-details {
+  grid-area: heading-details;
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  white-space: nowrap;
+  grid-template-areas: "transporter vehicle-type";
+}
+
+.transporter {
+  grid-area: transporter;
+  justify-self: left;
+}
+
+.vehicle-type {
+  grid-area: vehicle-type;
+  justify-self: right;
+}
+
+.rate-details {
+  grid-area: rate-details;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "incl-rate-rev excl-rate-rev"
+                        "incl-rate-org excl-rate-org";
+}
+
+.incl-rate-rev {
+  grid-area: incl-rate-rev;
+  justify-self: left;
+  font-size: 1em;
+  color: darkslateblue;
+  font-weight: 540;
+}
+
+.excl-rate-rev {
+  grid-area: excl-rate-rev;
+  justify-self: right;
+  font-size: 1em;
+  color: darkslateblue;
+  font-weight: 540;
+}
+
+.incl-rate-org {
+  grid-area: incl-rate-org;
+  justify-self: left;
+  font-size: 0.85em;
+  color: midnightblue;
+  font-weight: 400;
+}
+
+.excl-rate-org {
+  grid-area: excl-rate-org;
+  justify-self: right;
+  font-size: 0.85em;
+  color: midnightblue;
+  font-weight: 400;
+}
+
+.seperator {
+    grid-area: seperator;
+    width: 100%;
+    margin: 1em 0em 0.5em 0em;
+}
+
+.footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "status call-now"
+}
+
+.status {
+  grid-area: status;
+  justify-self: left;
+}
+
+.call-now {
+  grid-area: call-now;
+  justify-self: right;
+}
+
+.mat-gray {
+    background-color: transparent;
+    color: gray!important;
+}
+
+.mat-blue {
+    background-color: transparent;
+    color: #3366ff!important;
+}

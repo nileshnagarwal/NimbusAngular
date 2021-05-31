@@ -26,6 +26,7 @@ import { PipesModule } from '../../common/modules/pipes/pipes.module';
 import { EnquiryCardMobileComponent } from './enquiry-card-mobile/enquiry-card-mobile.component';
 import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card-desktop.component';
 import { EnquiryViewComponent } from './enquiry-view/enquiry-view.component';
+import { QuoteCardComponent } from './quote-card/quote-card.component';
 
 @NgModule({
   imports: [

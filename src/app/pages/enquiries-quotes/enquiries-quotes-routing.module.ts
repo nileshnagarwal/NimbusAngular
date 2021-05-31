@@ -1,3 +1,4 @@
+import { QuoteCardComponent } from './quote-card/quote-card.component';
 import { EnquiryViewComponent } from './enquiry-view/enquiry-view.component';
 import { QuotesReportComponent } from './quotes-report/quotes-report.component';
 import { NgModule } from '@angular/core';
@@ -50,6 +51,15 @@ const routes: Routes = [{
   },
   {
     path: '',
+    component: QuoteCardComponent,
+    children: [{
+      path: 'quote-card',
+      canActivate: [AuthGuardService],
+      component: QuoteCardComponent,
+    }],
+  },  
+  {
+    path: '',
     component: EnquiriesSearchComponent,
     children: [{
       path: 'enquiries-search',
@@ -75,4 +85,5 @@ export const routedComponents = [
   QuotesReportComponent,
   EnquiriesSearchComponent,
   EnquiryListComponent,
+  QuoteCardComponent,
 ];

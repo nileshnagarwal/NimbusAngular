@@ -18,8 +18,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/enquiries-quotes/quotes-report',
       },
       {
-        title: 'Enquiry View',
-        link: '/pages/enquiries-quotes/enquiry-view',
+        title: 'Quote Card',
+        link: '/pages/enquiries-quotes/quote-card',
       },
     ],
   },
