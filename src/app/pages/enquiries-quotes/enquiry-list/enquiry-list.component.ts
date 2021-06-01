@@ -2,7 +2,6 @@ import { EnquiriesService } from '../../../common/services/enquiries-quotes/enqu
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { pageSize } from '../../../common/misc/api-constants';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EnquiriesViewComponent } from '../enquiries-view/enquiries-view.component';
 import { EnquiryViewComponent } from './../enquiry-view/enquiry-view.component';
 import { MiscService } from '../../../common/services/misc/misc.service';
 

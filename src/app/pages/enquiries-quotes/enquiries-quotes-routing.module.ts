@@ -57,7 +57,7 @@ const routes: Routes = [{
       canActivate: [AuthGuardService],
       component: QuoteCardComponent,
     }],
-  },  
+  },
   {
     path: '',
     component: EnquiriesSearchComponent,

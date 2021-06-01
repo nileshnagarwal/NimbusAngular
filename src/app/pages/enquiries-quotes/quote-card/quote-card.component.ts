@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Quote } from '../../../common/interfaces/quote';
 
 @Component({
   selector: 'ngx-quote-card',
   templateUrl: './quote-card.component.html',
-  styleUrls: ['./quote-card.component.css']
+  styleUrls: ['./quote-card.component.css'],
 })
 export class QuoteCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  @Input() quote: Quote;
 
 }
