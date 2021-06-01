@@ -26,46 +26,56 @@
   overflow: hidden;
 }
 
-  
 .container {
-  display: grid;
-  grid-template-rows: 1fr 1fr min-content 1fr;
-  grid-template-areas: "heading-details"
-                        "rate-details"
-                        "seperator"
-                        "footer";
+    display: grid;
+    grid-template-rows: 1fr min-content min-content;
+    grid-template-areas: "quote-body"
+                          "seperator"
+                          "footer";
 }
 
-.heading-details {
-  grid-area: heading-details;
-  display: grid;
-  grid-template-columns: 1fr min-content;
-  white-space: nowrap;
-  grid-template-areas: "transporter vehicle-type";
+.quote-body {
+    grid-area: quote-body;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr min-content;
+    white-space: nowrap;
+    grid-template-areas: "transporter rev-rates"
+                        "vehicle-type org-rates";
 }
 
 .transporter {
   grid-area: transporter;
   justify-self: left;
+  padding-bottom: 10px;
 }
 
 .vehicle-type {
   grid-area: vehicle-type;
-  justify-self: right;
+  justify-self: left;
 }
 
-.rate-details {
-  grid-area: rate-details;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "incl-rate-rev excl-rate-rev"
-                        "incl-rate-org excl-rate-org";
+.rev-rates {
+    grid-area: rev-rates;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "incl-rate-rev excl-rate-rev";
+}
+
+.org-rates {
+    grid-area: org-rates;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "incl-rate-org excl-rate-org";
+}
+
+.rate {
+    margin: 0px 10px;
+    justify-self: center;
 }
 
 .incl-rate-rev {
   grid-area: incl-rate-rev;
-  justify-self: left;
   font-size: 1em;
   color: darkslateblue;
   font-weight: 540;
@@ -73,7 +83,6 @@
 
 .excl-rate-rev {
   grid-area: excl-rate-rev;
-  justify-self: right;
   font-size: 1em;
   color: darkslateblue;
   font-weight: 540;
@@ -81,7 +90,6 @@
 
 .incl-rate-org {
   grid-area: incl-rate-org;
-  justify-self: left;
   font-size: 0.85em;
   color: midnightblue;
   font-weight: 400;
@@ -89,7 +97,6 @@
 
 .excl-rate-org {
   grid-area: excl-rate-org;
-  justify-self: right;
   font-size: 0.85em;
   color: midnightblue;
   font-weight: 400;

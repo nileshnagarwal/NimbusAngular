@@ -1,17 +1,19 @@
 <nb-card>
   <nb-card-body>
     <div class="container">
-      <div class="heading-details ellipsis">
-        <div class="transporter h3-card overflow">Shree Shyam Trailor Service</div>    
-        <div class="vehicle-type h4-card">Spl Trailer Heavy II Crown SBT</div>
+      <div class="quote-body">
+        <div class="transporter h3-card overflow ellipsis">Shree Shyam Trailor Service</div>    
+        <div class="rev-rates">
+          <div class="incl-rate-rev rate">₹ 100,000 Incl</div>
+          <div class="excl-rate-rev rate">₹ 60,000 Excl</div>
+        </div>
+        <div class="org-rates">
+          <div class="incl-rate-org rate">₹ 125,000 Org</div>
+          <div class="excl-rate-org rate">₹ 65,000 Org</div>
+        </div>
+        <div class="vehicle-type h4-card ellipsis overflow">Spl Trailer Heavy II Crown SBT</div>
       </div>
-      <div class="rate-details">
-        <div class="incl-rate-rev">₹ 100,000 Incl</div>
-        <div class="excl-rate-rev">₹ 60,000 Excl</div>
-        <div class="incl-rate-org">₹ 125,000 Org</div>
-        <div class="excl-rate-org">₹ 65,000 Org</div>
-      </div>
-      
+
       <mat-divider class="seperator"></mat-divider>
 
       <div class="footer">
@@ -22,7 +24,45 @@
           <button 
           id="call"
           mat-raised-button
-          color="gray"
+          color="blue"
+          ngbAutofocus>
+            <a href="tel:9920212077">
+              Call Now
+            </a>
+          </button>  
+        </div>    
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <div class="container">
+      <div class="quote-body ellipsis">
+        <div class="transporter h3-card overflow ellipsis">Jay Bhagwan Baba Transport Service</div>    
+        <div class="rev-rates">
+          <div class="incl-rate-rev rate">₹ 90,000 Incl</div>
+          <div class="excl-rate-rev rate">₹ 55,000 Excl</div>
+        </div>
+        <div class="org-rates">
+          <div class="incl-rate-org rate">₹ 100,000 Org</div>
+          <div class="excl-rate-org rate">₹ 65,000 Org</div>
+        </div>
+        <div class="vehicle-type h4-card overflow ellipsis">Spl Trailer Heavy II Crown SBT</div>
+      </div>
+            
+      <mat-divider class="seperator"></mat-divider>
+
+      <div class="footer">
+        <div class="status">
+          <button mat-stroked-button disabled color="gray">Searching Vehicle</button>
+        </div>
+        <div class="call-now">
+          <button 
+          id="call"
+          mat-raised-button
+          color="blue"
           ngbAutofocus>
             <a href="tel:9920212077">
               Call Now
