@@ -3,26 +3,29 @@
     <div class="container">
       <div class="quote-body">
         <div class="transporter h3-card overflow ellipsis">{{quote.transporter_str}}</div>    
-        <div class="rev-rates">
-          <div class="incl-rate-rev rate" *ngIf="!quote.freight_normal_org">
-            <div *ngIf="quote.freight_incl_rev">
-              ₹ {{quote.freight_incl_rev}} Incl
+        <div class="rates">
+          <div class="rates-cell">
+            <div class="freight_11 rate">
+              {{freight_11}}
             </div>
-            <div *ngIf="!quote.freight_incl_rev">
-              ₹ {{quote.freight_incl_org}} Incl
+            <div class="freight_12 rate">
+              {{freight_12}}
             </div>
-          </div>
-          <div class="excl-rate-rev rate">
-            <div *ngIf="!quote.freight_normal_org">
-              <div></div>
+            <div class="freight_21 rate">
+              {{freight_21}}
+            </div>
+            <div class="freight_22 rate">
+              {{freight_22}}
             </div>
           </div>
         </div>
-        <div class="org-rates">
-          <div class="incl-rate-org rate">₹ 125,000 Org</div>
-          <div class="excl-rate-org rate">₹ 65,000 Org</div>
+        <div class="vehicle-type h4-card ellipsis overflow">
+          {{quote.vehicle_type_obj[0].vehicle}}
+          <span *ngIf="quote.vehicle_type_obj.length>1" 
+            matTooltip={{vehicleTypeToolTip}}> 
+            +{{quote.vehicle_type_obj.length-1}}
+          </span>
         </div>
-        <div class="vehicle-type h4-card ellipsis overflow">Spl Trailer Heavy II Crown SBT</div>
       </div>
 
       <mat-divider class="seperator"></mat-divider>
@@ -38,44 +41,6 @@
           color="blue"
           ngbAutofocus>
             <a href="tel:02225891620">
-              Call Now
-            </a>
-          </button>  
-        </div>    
-      </div>
-    </div>
-  </nb-card-body>
-</nb-card>
-
-<nb-card>
-  <nb-card-body>
-    <div class="container">
-      <div class="quote-body ellipsis">
-        <div class="transporter h3-card overflow ellipsis">Jay Bhagwan Baba Transport Service</div>    
-        <div class="rev-rates">
-          <div class="incl-rate-rev rate">₹ 90,000 Incl</div>
-          <div class="excl-rate-rev rate">₹ 55,000 Excl</div>
-        </div>
-        <div class="org-rates">
-          <div class="incl-rate-org rate">₹ 100,000 Org</div>
-          <div class="excl-rate-org rate">₹ 65,000 Org</div>
-        </div>
-        <div class="vehicle-type h4-card overflow ellipsis">Spl Trailer Heavy II Crown SBT</div>
-      </div>
-            
-      <mat-divider class="seperator"></mat-divider>
-
-      <div class="footer">
-        <div class="status">
-          <button mat-stroked-button disabled color="gray">Searching Vehicle</button>
-        </div>
-        <div class="call-now">
-          <button 
-          id="call"
-          mat-raised-button
-          color="blue"
-          ngbAutofocus>
-            <a href="tel:9920212077">
               Call Now
             </a>
           </button>  

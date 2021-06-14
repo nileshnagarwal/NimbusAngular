@@ -4,7 +4,8 @@ import {MatButtonModule, MatCheckboxModule, MatFormFieldModule,
   MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatGridListModule,
   MatDividerModule,
   MatExpansionModule,
-  MatRadioModule} from '@angular/material';
+  MatRadioModule,
+  MatTooltipModule} from '@angular/material';
 import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} from '@angular/material';
 
 @NgModule({
@@ -26,6 +27,7 @@ import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} f
     MatDividerModule,
     MatExpansionModule,
     MatRadioModule,
+    MatTooltipModule,
   ],
   exports: [
     MatButtonModule,
@@ -42,6 +44,7 @@ import {MatIconModule, MatInputModule, MatAutocompleteModule, MatSliderModule} f
     MatDividerModule,
     MatExpansionModule,
     MatRadioModule,
+    MatTooltipModule,
   ],
   providers: [
     MatDatepickerModule,
