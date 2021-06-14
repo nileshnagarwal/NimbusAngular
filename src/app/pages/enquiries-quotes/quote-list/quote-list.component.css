@@ -1,0 +1,4 @@
+nb-list-item:nth-child(n) {
+    border-top: 0px;
+    border-bottom: 0px;
+}

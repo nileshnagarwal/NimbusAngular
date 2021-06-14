@@ -27,6 +27,7 @@ import { EnquiryCardMobileComponent } from './enquiry-card-mobile/enquiry-card-m
 import { EnquiryCardDesktopComponent } from './enquiry-card-desktop/enquiry-card-desktop.component';
 import { EnquiryViewComponent } from './enquiry-view/enquiry-view.component';
 import { QuoteListComponent } from './quote-list/quote-list.component';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -70,6 +71,8 @@ import { QuoteListComponent } from './quote-list/quote-list.component';
     // be injected
     TransporterComponent,
     EnquiriesViewComponent,
+    // To use CurrencyPipe in component Constructor
+    CurrencyPipe,
   ],
   entryComponents: [
     TransporterComponent,

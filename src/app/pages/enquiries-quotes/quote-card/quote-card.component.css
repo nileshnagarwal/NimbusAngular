@@ -35,38 +35,54 @@
 }
 
 .quote-body {
-    grid-area: quote-body;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr min-content;
-    white-space: nowrap;
-    grid-template-areas: "transporter rev-rates"
-                        "vehicle-type org-rates";
+  grid-area: quote-body;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr min-content;
+  white-space: nowrap;
 }
 
 .transporter {
   grid-area: transporter;
   justify-self: left;
   padding-bottom: 10px;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .vehicle-type {
   grid-area: vehicle-type;
   justify-self: left;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.rates{
+  grid-column: 2;
+  grid-row: 1/3;
+}
+
+.rates-cell {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "freight_11 freight_12"
+                        "freight_21 freight_22";
 }
 
 .rev-rates {
     grid-area: rev-rates;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "incl-rate-rev excl-rate-rev";
+    grid-template-areas: "freight_11 freight_12";
 }
 
 .org-rates {
     grid-area: org-rates;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "incl-rate-org excl-rate-org";
+    grid-template-areas: "freight_21 freight_22";
 }
 
 .rate {
@@ -74,29 +90,29 @@
     justify-self: center;
 }
 
-.incl-rate-rev {
-  grid-area: incl-rate-rev;
+.freight_11 {
+  grid-area: freight_11;
   font-size: 1em;
   color: darkslateblue;
   font-weight: 540;
 }
 
-.excl-rate-rev {
-  grid-area: excl-rate-rev;
+.freight_12 {
+  grid-area: freight_12;
   font-size: 1em;
   color: darkslateblue;
   font-weight: 540;
 }
 
-.incl-rate-org {
-  grid-area: incl-rate-org;
+.freight_21 {
+  grid-area: freight_21;
   font-size: 0.85em;
   color: midnightblue;
   font-weight: 400;
 }
 
-.excl-rate-org {
-  grid-area: excl-rate-org;
+.freight_22 {
+  grid-area: freight_22;
   font-size: 0.85em;
   color: midnightblue;
   font-weight: 400;

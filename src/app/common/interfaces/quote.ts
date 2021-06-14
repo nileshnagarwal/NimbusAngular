@@ -24,6 +24,13 @@ export interface Quote {
     width?: number;
     height?: number;
     weight?: number;
+    freight_normal_org?: number;
+    freight_incl_org?: number;
+    freight_excl_org?: number;
+    freight_normal_rev?: number;
+    freight_incl_rev?: number;
+    freight_excl_rev?: number;
+    vehicle_type_obj?: Object[];
 }
 
 
