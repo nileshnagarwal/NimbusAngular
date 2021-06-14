@@ -82,7 +82,7 @@ export class QuoteCardComponent implements OnInit {
   generateVehicleTypeList() {
     for (const vehicle_type of this.quote.vehicle_type_obj) {
       this.vehicleTypeList.push(vehicle_type['vehicle']);
-      this.vehicleTypeToolTip = this.vehicleTypeList.join(' | );
+      this.vehicleTypeToolTip = this.vehicleTypeList.join(' | ');
     }
   }
 
