@@ -24,6 +24,13 @@ export class LrEngageComponent implements OnInit {
         this.clientOptions = response.body
           .map(responseMap => responseMap);
       });
+
+    this.service.emptyLr()
+      .subscribe(response => {
+        this.emptyLr = response.body['lr_no']
+          .map(responseMap => responseMap);
+      });
+
   }
 
   @ViewChild('clientAutoComplete', { static: true }) clientAutoComplete: ElementRef;
@@ -33,6 +40,7 @@ export class LrEngageComponent implements OnInit {
   clientOptions: Client[] = [];
   clientFilteredOptions: Client[];
   modalRef: NgbActiveModal;
+  emptyLr: number[] = [];
 
   filter($event) {
     $event['type'] === 'click' ? '' : this.client_id.reset();
