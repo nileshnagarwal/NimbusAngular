@@ -15,7 +15,7 @@ export class LrViewComponent implements OnInit {
       this.consignor =  this.lr['consignor_obj']['client']['client'] + '\n' +
       this.lr['consignor_obj']['address'];
       if (this.lr.consignor_manual) {
-        this.consignor = this.consignor + '\n' + this.lr.consignee_manual;
+        this.consignor = this.consignor + '\n' + this.lr.consignor_manual;
       }
     } else {
       this.consignor = this.lr.consignor_manual;

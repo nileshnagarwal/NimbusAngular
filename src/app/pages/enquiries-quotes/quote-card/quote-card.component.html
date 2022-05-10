@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="vehicle-type h4-card ellipsis overflow">
-          {{quote.vehicle_type_obj[0].vehicle}}
+          {{quote.vehicle_type_obj[0]['vehicle']}}
           <span *ngIf="quote.vehicle_type_obj.length>1" 
             matTooltip={{vehicleTypeToolTip}}> 
             +{{quote.vehicle_type_obj.length-1}}

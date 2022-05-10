@@ -8,7 +8,6 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { VehicleTypeService } from '../../../common/services/masters/vehicle-type.service';
 import { VehicleBodyService } from './../../../common/services/masters/vehicle-body.service';
 import { EnquiriesService } from './../../../common/services/enquiries-quotes/enquiries.service';
-import { DateAdapter } from '@angular/material/core';
 import { googlePlaceValidator } from '../../../common/validators/ngx-google-places.directive';
 import { dropdownValidator } from '../../../common/validators/dropdown.directive';
 import { enquiryNoValidator } from '../../../common/validators/enquiry-id.directive';
@@ -30,7 +29,6 @@ export class EnquiriesComponent implements OnInit {
     private vehicleTypeService: VehicleTypeService,
     private vehicleBodyService: VehicleBodyService,
     private extraExpensesService: ExtraExpensesService,
-    private adapter: DateAdapter<any>,
     private service: EnquiriesService,
     private authService: AuthService,
     private modalService: NgbModal,
@@ -58,10 +56,6 @@ export class EnquiriesComponent implements OnInit {
       this.extraExpensesOptions = response.body.
         map(responseMap => responseMap);
     });
-
-    // The below statement changes the date locale to India
-    // displaying DD-MM-YYYY date format in form
-    this.adapter.setLocale('in');
 
     // Initialise Source and Destination FormArray with 1 Source/Dest
     this.addSource();
