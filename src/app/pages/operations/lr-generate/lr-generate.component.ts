@@ -33,8 +33,7 @@ export class LrGenerateComponent implements OnInit {
 
   @ViewChild('consignorFinal', { static: true }) consignorFinal: ElementRef;
   @ViewChild('consigneeFinal', { static: true }) consigneeFinal: ElementRef;
-
-  @ViewChild(FormGroupDirective, { static: true }) LrGenFormDir;
+ @ViewChild(FormGroupDirective, { static: true }) LrGenFormDir;
 
   lrNoOptions: LR[] = [];
   clientAddressOptions: ClientAddress[] = [];
@@ -70,6 +69,8 @@ export class LrGenerateComponent implements OnInit {
     comment: new FormControl(''),
     size: new FormControl(''),
     weight: new FormControl(''),
+    challan_no: new FormControl('', Validators.required),
+    ewaybill_expiry_date: new FormControl(''),
   });
 
   lrNoSelected(event?, lr?) {
@@ -102,8 +103,8 @@ export class LrGenerateComponent implements OnInit {
       const consignorAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consignorAddress = consignorAddressObj.address;
-      this.consignorFinal.nativeElement['value'] = this.client + '.\n' +
-        this.consignorAddress + '\n' + this.consignor_manual.value;
+      this.consignorFinal.nativeElement['value'] = this.consignorAddress +
+        '\n' + this.consignor_manual.value;
       this.consignor_gstin.setValue(consignorAddressObj.gstin);
     }
   }
@@ -115,8 +116,8 @@ export class LrGenerateComponent implements OnInit {
       const consigneeAddressObj = this.clientAddressOptions.
         find(i => i.client_address_id === event.value);
       this.consigneeAddress = consigneeAddressObj.address;
-      this.consigneeFinal.nativeElement['value'] = this.client + '.\n' +
-        this.consigneeAddress + '\n' + this.consignee_manual.value;
+      this.consigneeFinal.nativeElement['value'] = this.consigneeAddress +
+        '\n' + this.consignee_manual.value;
       this.consignee_gstin.setValue(consigneeAddressObj.gstin);
     }
   }
@@ -125,8 +126,8 @@ export class LrGenerateComponent implements OnInit {
     if (!this.consignor_id.value) {
       this.consignorFinal.nativeElement['value'] = this.consignor_manual.value;
     } else {
-      this.consignorFinal.nativeElement['value'] = this.client + '.\n' +
-        this.consignorAddress + '\n' + this.consignor_manual.value;
+      this.consignorFinal.nativeElement['value'] = this.consignorAddress +
+        '\n' + this.consignor_manual.value;
     }
   }
 
@@ -134,8 +135,8 @@ export class LrGenerateComponent implements OnInit {
     if (!this.consignee_id.value) {
       this.consigneeFinal.nativeElement['value'] = this.consignee_manual.value;
     } else {
-      this.consigneeFinal.nativeElement['value'] = this.client + '.\n' +
-        this.consigneeAddress + '\n' + this.consignee_manual.value;
+      this.consigneeFinal.nativeElement['value'] = this.consigneeAddress +
+        '\n' + this.consignee_manual.value;
     }
   }
 
@@ -289,6 +290,14 @@ export class LrGenerateComponent implements OnInit {
 
   get weight() {
     return this.lrGenForm.get('weight');
+  }
+
+  get challan_no() {
+    return this.lrGenForm.get('challan_no');
+  }
+
+  get ewaybill_expiry_date() {
+    return this.lrGenForm.get('ewaybill_expiry_date');
   }
 
 }

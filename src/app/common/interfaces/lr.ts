@@ -23,5 +23,7 @@ export interface LR {
     comment?: string;
     size?: string;
     weight?: string;
+    challan_no?: number;
+    ewaybill_expiry_date?: Date;
     items?: object;
 }

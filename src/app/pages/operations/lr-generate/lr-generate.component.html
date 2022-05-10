@@ -391,6 +391,38 @@
             </mat-form-field>
           </div>
         </div>
+        
+        <div class="form-group row">
+          <!-- challan No -->
+          <div class="col-md-6 col-lg-6">
+            <mat-form-field class="full-width">
+              <input
+                matInput 
+                formControlName="challan_no"
+                type="number"
+                id="challan_no" 
+                name="challan_no"
+                placeholder="Challan No">
+            </mat-form-field>
+          </div>
+
+          <!-- Ewaybill Expiry Date -->
+          <div class="col-md-6 col-lg-6">
+            <mat-form-field class="full-width">
+              <input 
+                id="ewaybill_expiry_date"
+                name="ewaybill_expiry_date"
+                matInput [matDatepicker]="ewaybill_picker" 
+                formControlName="ewaybill_expiry_date"
+                placeholder="Ewaybill Expiry Date">
+              <mat-datepicker-toggle matSuffix [for]="ewaybill_picker"></mat-datepicker-toggle>
+              <mat-datepicker 
+                touchUi 
+                #ewaybill_picker>
+              </mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
 
         <div class="form-group row">
           <!-- Comments -->

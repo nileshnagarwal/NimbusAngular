@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { ValidationErrors } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,10 @@ export class LrService {
   }
 
   generateLR(genLrFormData): Observable<HttpResponse<LR>> {
+    // First lets change the ewaybill_expiry_date to DD-MM-YYYY Format
+    genLrFormData['ewaybill_expiry_date'] = formatDate(genLrFormData['ewaybill_expiry_date'], 'yyyy-MM-dd', 'en-IN');
+
+    // Now lets submit the form data to the server
     return this.http.post<LR>(
       this.generateLrUrl,
       genLrFormData,
