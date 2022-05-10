@@ -29,6 +29,13 @@ import { EnquiryViewComponent } from './enquiry-view/enquiry-view.component';
 import { QuoteListComponent } from './quote-list/quote-list.component';
 import { CurrencyPipe } from '@angular/common';
 
+// Date Formating imports
+// Refer https://v8.material.angular.io/components/datepicker/overview#customizing-the-parse-and-display-formats
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MY_FORMATS } from '../../common/misc/date-formats';
+
+
 @NgModule({
   imports: [
     ThemeModule,
@@ -73,6 +80,14 @@ import { CurrencyPipe } from '@angular/common';
     EnquiriesViewComponent,
     // To use CurrencyPipe in component Constructor
     CurrencyPipe,
+
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   entryComponents: [
     TransporterComponent,

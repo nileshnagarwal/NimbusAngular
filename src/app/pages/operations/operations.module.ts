@@ -12,6 +12,12 @@ import { CompanyHeaderComponent } from '../masters/company-header/company-header
 import { NgxPrintModule } from 'ngx-print';
 import { LrViewComponent } from './lr-view/lr-view.component';
 
+// Date Formating imports
+// Refer https://v8.material.angular.io/components/datepicker/overview#customizing-the-parse-and-display-formats
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MY_FORMATS } from '../../common/misc/date-formats';
+
 @NgModule({
   declarations: [...routedComponents],
   imports: [
@@ -29,6 +35,15 @@ import { LrViewComponent } from './lr-view/lr-view.component';
     LrEngageComponent,
     CompanyHeaderComponent,
     LrViewComponent,
+  ],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
 export class OperationsModule { }
